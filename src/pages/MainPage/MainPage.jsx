@@ -69,8 +69,10 @@ export default function MainPage({ score, setScore }) {
       setWinner(true);
       quizlist.completed = true;
     }
-    console.log(quizlist)
   };
+
+  const todayDate = new Date().toLocaleDateString();
+
 
   function handleChange(evt) {
     const newGuess = evt.target.value
