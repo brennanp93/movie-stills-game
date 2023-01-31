@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Middleware to check and verify a JWT and
 // assign the user object from the JWT to req.user
-app.use(require('./config/checkToken'));
+// app.use(require('./config/checkToken'));
 
 const port = process.env.PORT || 3001;
 

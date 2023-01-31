@@ -5,7 +5,7 @@ const User = require('../../models/user');
 module.exports = {
   create,
   login,
-  checkToken
+  // checkToken
 };
 
 // function checkToken(req, res) {

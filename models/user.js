@@ -16,7 +16,10 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  score: {
+    type: Number 
+  },
 }, {
   timestamps: true,
   toJSON: {
