@@ -12,11 +12,13 @@ import * as movieListAPI from '../../utilities/movielist-api'
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [score, setScore] = useState(0);
-  const [answerKey, setAnswerKey] = useState()
-  const [dailyQuestion, setDailyQuestion] = useState([])
-  // const todayDate = new Date().toLocaleDateString();
+  const [answerKey, setAnswerKey] = useState();
+  const [dailyQuestion, setDailyQuestion] = useState();
 
-// console.log(dailyQuestion)
+  async function updateBoolean(booleanData, id) {
+    await movieListAPI.updateBoolean(booleanData, id);
+  }
+
   useEffect(function () {
     async function getDailyItems() {
       if (user) {
@@ -37,7 +39,8 @@ export default function App() {
           <MainPage score={score} 
           setScore={setScore}
           dailyQuestion={dailyQuestion}
-          answerKey={answerKey} />
+          answerKey={answerKey}
+          updateBoolean={updateBoolean} />
           {/* <Routes> */}
           {/* Route components in here */}
           {/* <Route path="/orders/new" element={<NewOrderPage />} /> */}

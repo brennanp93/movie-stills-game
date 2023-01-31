@@ -2,6 +2,7 @@ import { useState } from "react";
 import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import Fuse from "fuse.js";
 import { quizlist } from "../../data";
+import { updateBoolean } from "../../utilities/movielist-api";
 
 export default function MainPage({ score, setScore, dailyQuestion, answerKey }) {
   const [prompt, setPrompt] = useState('Good Luck!');
@@ -15,12 +16,14 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
   const [dailyLimit, setDailyLimit] = useState(0)
+  // console.log(answerKey, "AK")
 
-  let currentMovie = quizlist[index]
+  // let currentMovie = quizlist[index]
+  let currentMovie = dailyQuestion
+  console.log(currentMovie)
   let correctAnswer = currentMovie.movie;
 
   let minLengthAnswer = Math.floor(correctAnswer.length * .66)
-
   function handleSubmit(evt) {
     evt.preventDefault();
     const options = {
@@ -29,8 +32,6 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
     };
     const fuse = new Fuse(answerKey, options)
     const result = fuse.search(incomingGuess)[0].item.answer;
-    console.log(fuse)
-    console.log(answerKey, 'data.js')
     /*------*/
     if (result === correctAnswer) {
       setDailyLimit(dailyLimit + 1)
@@ -38,6 +39,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       // setPrompt('NICE');
       setIncomingGuess('');
       currentMovie.completed = true;
+
       if (numGuesses === 3) {
         setScore(score + 4)
       } else if (numGuesses === 2) {
@@ -71,6 +73,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       setWinner(true);
       quizlist.completed = true;
     }
+    updateBoolean(currentMovie, currentMovie._id)
   };
 
 
@@ -89,8 +92,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       setButtonPrompt('final question')
       setGameOver(true);
       return
-    }
-    ;
+    };
     quizlist.splice(index, 1)
     setIndex(Math.floor(Math.random() * quizlist.length));
     setWinner(false);
