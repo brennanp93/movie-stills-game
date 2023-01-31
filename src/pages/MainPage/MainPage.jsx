@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SubmitForm from "../../components/SubmitForm/SubmitForm"
+import ResultPage from "../../components/ResultPage/ResultPage";
 import Fuse from "fuse.js";
 import { quizlist } from "../../data";
 import { updateBoolean } from "../../utilities/movielist-api";
@@ -20,7 +21,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
 
   // let currentMovie = quizlist[index]
   let currentMovie = dailyQuestion
-  console.log(currentMovie)
+  console.log(currentMovie, "CM")
+  // console.log(answerKey)
   let correctAnswer = currentMovie.movie;
 
   let minLengthAnswer = Math.floor(correctAnswer.length * .66)
@@ -105,8 +107,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   }
 
   return (
-    <>{gameOver ?
-      <div>Hello</div>
+    <>{currentMovie.completed ?
+      <ResultPage score={score} prompt={prompt}/>
       :
       <div>
         <div>

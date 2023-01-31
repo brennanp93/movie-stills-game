@@ -14,7 +14,7 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [answerKey, setAnswerKey] = useState();
   const [dailyQuestion, setDailyQuestion] = useState();
-
+// console.log(answerKey, "APP.JS")
   async function updateBoolean(booleanData, id) {
     await movieListAPI.updateBoolean(booleanData, id);
   }
