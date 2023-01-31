@@ -3,7 +3,7 @@ import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import Fuse from "fuse.js";
 import { quizlist } from "../../data";
 
-export default function MainPage({ score, setScore, answerKey }) {
+export default function MainPage({ score, setScore, dailyQuestion, answerKey }) {
   const [prompt, setPrompt] = useState('Good Luck!');
   const [buttonPrompt, setButtonPrompt] = useState('Next Question');
   const [numGuesses, setNumGuesses] = useState(3);
@@ -73,7 +73,6 @@ export default function MainPage({ score, setScore, answerKey }) {
     }
   };
 
-  const todayDate = new Date().toLocaleDateString();
 
 
   function handleChange(evt) {
