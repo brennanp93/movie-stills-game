@@ -1,9 +1,9 @@
 import { useState } from "react";
 import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import Fuse from "fuse.js";
-import { quizlist, answerKey } from "../../data";
+import { quizlist } from "../../data";
 
-export default function MainPage({ score, setScore }) {
+export default function MainPage({ score, setScore, answerKey }) {
   const [prompt, setPrompt] = useState('Good Luck!');
   const [buttonPrompt, setButtonPrompt] = useState('Next Question');
   const [numGuesses, setNumGuesses] = useState(3);
@@ -29,6 +29,8 @@ export default function MainPage({ score, setScore }) {
     };
     const fuse = new Fuse(answerKey, options)
     const result = fuse.search(incomingGuess)[0].item.answer;
+    console.log(fuse)
+    console.log(answerKey, 'data.js')
     /*------*/
     if (result === correctAnswer) {
       setDailyLimit(dailyLimit + 1)

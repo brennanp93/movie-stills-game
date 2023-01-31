@@ -11,23 +11,24 @@ import * as answerKeyAPI from '../../utilities/answerkey-api'
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [score, setScore] = useState(0);
-  const [answerKey, setAnswerKey] = useState([])
-  console.log(answerKey)
+  const [answerKey, setAnswerKey] = useState()
 
-  useEffect(function() {
+  useEffect(function () {
     async function getDailyItems() {
+      if (user) {
       const entireAnswerKey = await answerKeyAPI.getAll();
-      setAnswerKey(entireAnswerKey)
+      setAnswerKey(entireAnswerKey[0].answers)
     }
+  };
     getDailyItems();
-  }, [])
-  
+  }, [user])
+
   return (
     <main className="App">
       {user ?
         <>
           <NavBar user={user} setUser={setUser} score={score} />
-          <MainPage score={score} setScore={setScore} />
+          <MainPage score={score} setScore={setScore} answerKey={answerKey} />
           {/* <Routes> */}
           {/* Route components in here */}
           {/* <Route path="/orders/new" element={<NewOrderPage />} /> */}
