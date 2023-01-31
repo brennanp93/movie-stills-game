@@ -60,5 +60,4 @@ export const answerKey = [
   { answer: 'Parasite' },
   { answer: 'The Shawshank Redemption' },
   { answer: 'The Godfather' },
-
 ]

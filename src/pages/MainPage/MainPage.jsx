@@ -109,7 +109,7 @@ export default function MainPage({ score, setScore }) {
         <div>
           <h1>Guesses Remaining: {numGuesses}</h1>
           <div>
-            <img src={currentMovie.image} alt="" />
+            <img className="image" src={currentMovie.image} alt="" />
           </div>
           <h3>{hintOne}</h3>
           <h3>{hintTwo}</h3>
