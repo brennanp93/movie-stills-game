@@ -4,6 +4,9 @@ import ResultPage from "../../components/ResultPage/ResultPage";
 import Fuse from "fuse.js";
 import { quizlist } from "../../data";
 import { updateBoolean } from "../../utilities/movielist-api";
+// import cookies from 'react-cookies'
+import { useCookies } from 'react-cookie';
+// const cookies = new Cookies();
 
 export default function MainPage({ score, setScore, dailyQuestion, answerKey }) {
   const [prompt, setPrompt] = useState('Good Luck!');
@@ -17,15 +20,16 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
   const [dailyLimit, setDailyLimit] = useState(0)
-  // console.log(answerKey, "AK")
+  const [cookies, setCookies, removeCookies] = useCookies(['date'])
 
   // let currentMovie = quizlist[index]
   let currentMovie = dailyQuestion
-  console.log(currentMovie, "CM")
-  // console.log(answerKey)
   let correctAnswer = currentMovie.movie;
-
+  const todayDate = new Date().toLocaleDateString();
+  let midnight = new Date();
+  midnight.setHours(23,59,59,0)
   let minLengthAnswer = Math.floor(correctAnswer.length * .66)
+
   function handleSubmit(evt) {
     evt.preventDefault();
     const options = {
@@ -75,7 +79,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       setWinner(true);
       quizlist.completed = true;
     }
-    updateBoolean(currentMovie, currentMovie._id)
+    setCookies('date', todayDate, {expires: midnight} )
+    // updateBoolean(currentMovie, currentMovie._id)
   };
 
 
@@ -107,7 +112,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   }
 
   return (
-    <>{currentMovie.completed ?
+    <>{dailyQuestion.activeDate === cookies.date ?
       <ResultPage score={score} prompt={prompt}/>
       :
       <div>
