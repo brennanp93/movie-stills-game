@@ -51,23 +51,24 @@ const AnswerKey = require('./models/answerkey');
     },
   ]);
   await AnswerKey.deleteMany({});
-  const answerKey = await AnswerKey.create([
-    { answer: 'There Will Be Blood' },
-    { answer: 'Taxi Driver' },
-    { answer: 'Shutter Island' },
-    { answer: 'Gone Girl' },
-    { answer: 'Full Metal Jacket' },
-    { answer: 'The Aviator' },
-    { answer: 'Django Unchained' },
-    { answer: 'The Girl With The Dragon Tattoo' },
-    { answer: 'The Northman' },
-    { answer: 'The Darjeeling Limited' },
-    { answer: 'No Country For Old Men' },
-    { answer: 'Midsommar' },
-    { answer: 'Parasite' },
-    { answer: 'The Shawshank Redemption' },
-    { answer: 'The Godfather' },
-  ]);
+  const answerKey = await AnswerKey.create([{
+    answers: [
+      { answer: 'There Will Be Blood' },
+      { answer: 'Taxi Driver' },
+      { answer: 'Shutter Island' },
+      { answer: 'Gone Girl' },
+      { answer: 'Full Metal Jacket' },
+      { answer: 'The Aviator' },
+      { answer: 'Django Unchained' },
+      { answer: 'The Girl With The Dragon Tattoo' },
+      { answer: 'The Northman' },
+      { answer: 'The Darjeeling Limited' },
+      { answer: 'No Country For Old Men' },
+      { answer: 'Midsommar' },
+      { answer: 'Parasite' },
+      { answer: 'The Shawshank Redemption' },
+      { answer: 'The Godfather' }],
+  }]);
   console.log(movieList);
   process.exit();
 })();
