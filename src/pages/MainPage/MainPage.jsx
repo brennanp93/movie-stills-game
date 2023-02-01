@@ -9,13 +9,13 @@ import { useCookies } from 'react-cookie';
 // const cookies = new Cookies();
 
 export default function MainPage({ score, setScore, dailyQuestion, answerKey }) {
-  const [prompt, setPrompt] = useState('Good Luck!');
-  const [buttonPrompt, setButtonPrompt] = useState('Next Question');
+  const [prompt, setPrompt] = useState('');
+  // const [buttonPrompt, setButtonPrompt] = useState('Next Question');
   const [numGuesses, setNumGuesses] = useState(3);
   const [incomingGuess, setIncomingGuess] = useState('')
   const [winner, setWinner] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
+  // const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
   const [hintOne, setHintOne] = useState('')
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
@@ -24,6 +24,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
 
   // let currentMovie = quizlist[index]
   let currentMovie = dailyQuestion
+  console.log(currentMovie)
   let correctAnswer = currentMovie.movie;
   const todayDate = new Date().toLocaleDateString();
   let midnight = new Date();
@@ -42,9 +43,10 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
     if (result === correctAnswer) {
       setDailyLimit(dailyLimit + 1)
       setWinner(true);
-      // setPrompt('NICE');
+      setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
-      currentMovie.completed = true;
+      setCookies('date', todayDate, {expires: midnight} )
+      // currentMovie.completed = true;
 
       if (numGuesses === 3) {
         setScore(score + 4)
@@ -57,6 +59,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       } else if (numGuesses === -1) {
         setScore(score + 0)
       };
+
     } else if (result !== correctAnswer && numGuesses === 3) {
       // setPrompt('keep guessing');
       setNumGuesses(numGuesses - 1);
@@ -75,11 +78,11 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       setIncomingGuess('');
     }
     if (result !== correctAnswer && numGuesses === 0) {
-      alert('youlose');
+      setPrompt("Aw Shucks. Better luck tomorrow!");
       setWinner(true);
       quizlist.completed = true;
+      setCookies('date', todayDate, {expires: midnight} )
     }
-    setCookies('date', todayDate, {expires: midnight} )
     // updateBoolean(currentMovie, currentMovie._id)
   };
 
@@ -88,20 +91,21 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   function handleChange(evt) {
     const newGuess = evt.target.value
     setIncomingGuess(newGuess)
-  }
+  };
+
   function nextQuestion() {
     if (dailyLimit === 3) {
       setGameOver(true)
       return
     }
-    if (quizlist.length <= 1) {
-      setPrompt('game over')
-      setButtonPrompt('final question')
-      setGameOver(true);
-      return
-    };
-    quizlist.splice(index, 1)
-    setIndex(Math.floor(Math.random() * quizlist.length));
+    // if (quizlist.length <= 1) {
+    //   setPrompt('game over')
+    //   setButtonPrompt('final question')
+    //   setGameOver(true);
+    //   return
+    // };
+    // quizlist.splice(index, 1)
+    // setIndex(Math.floor(Math.random() * quizlist.length));
     setWinner(false);
     setNumGuesses(3);
     setHintOne('')
@@ -112,8 +116,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   }
 
   return (
-    <>{dailyQuestion.activeDate === cookies.date ?
-      <ResultPage score={score} prompt={prompt}/>
+    <>{currentMovie.activeDate === cookies.date ?
+      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer}/>
       :
       <div>
         <div>

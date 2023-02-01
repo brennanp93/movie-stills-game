@@ -17,7 +17,7 @@ export const quizlist = [
   {
     image: 'https://i.imgur.com/SZUrcDc.jpg',
     movie: 'Taxi Driver',
-    hints: ['Released: 1976','Directed By: Martin Scorsese', 'Starring: Robert De Niro'],
+    hints: ['Released: 1976', 'Directed By: Martin Scorsese', 'Starring: Robert De Niro'],
     completed: false,
     activeDate: '2/1/2023'
   },
