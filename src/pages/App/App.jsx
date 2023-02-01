@@ -21,8 +21,8 @@ export default function App() {
     return parseInt(savedScore) || 0;
   });
 // console.log(answerKey, "APP.JS")
-  async function updateBoolean(booleanData, id) {
-    await movieListAPI.updateBoolean(booleanData, id);
+  async function updateCount(booleanData, id) {
+    await movieListAPI.updateCount(booleanData, id);
   }
   
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function App() {
           setScore={setScore}
           dailyQuestion={dailyQuestion}
           answerKey={answerKey}
-          updateBoolean={updateBoolean}
+          updateCount={updateCount}
           cookies={cookies}
           setCookies={setCookies} />
           {/* <Routes> */}

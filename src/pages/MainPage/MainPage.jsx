@@ -8,7 +8,7 @@ import { updateBoolean } from "../../utilities/movielist-api";
 import { useCookies } from 'react-cookie';
 // const cookies = new Cookies();
 
-export default function MainPage({ score, setScore, dailyQuestion, answerKey, cookies, setCookies }) {
+export default function MainPage({ score, setScore, dailyQuestion, answerKey, cookies, setCookies, updateCount }) {
   const [prompt, setPrompt] = useState('');
   const [numGuesses, setNumGuesses] = useState(3);
   const [incomingGuess, setIncomingGuess] = useState('')
@@ -19,12 +19,12 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   // const [cookies, setCookies, removeCookies] = useCookies(['date'])
   // const [winner, setWinner] = useState(false);
   // const [buttonPrompt, setButtonPrompt] = useState('Next Question');
-  // const [gameOver, setGameOver] = useState(false);
+  const [count, setCount] = useState(0);
   // const [dailyQuestion1, setDailyQuestion] = useState(dailyQuestion)
 
   // let currentMovie = quizlist[index]
-
   let currentMovie = dailyQuestion
+  // console.log(currentMovie)
 
   let correctAnswer = currentMovie?.movie;
 
@@ -32,6 +32,11 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   let midnight = new Date();
   midnight.setHours(23, 59, 59, 0)
   let minLengthAnswer = Math.floor(correctAnswer?.length * .66)
+
+
+  // function handleUpdateBoolean(idx, id) {
+  //   updateCount(dailyQuestion, id);
+  // };
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -46,6 +51,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
       setCookies('date', todayDate, { expires: midnight })
+      currentMovie.count = currentMovie.count + 1
+      
       if (numGuesses === 3) {
         setScore(score + 4)
       } else if (numGuesses === 2) {
@@ -73,9 +80,10 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     }
     if (result !== correctAnswer && numGuesses === 0) {
       setPrompt("Aw Shucks. Better luck tomorrow!");
-      setCookies('date', todayDate, { expires: midnight })
+      setCookies('date', todayDate, { expires: midnight });
+      currentMovie.count = currentMovie.count + 1;
     }
-
+    updateCount(currentMovie, currentMovie._id)
   };
 
   function handleChange(evt) {
@@ -84,25 +92,25 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   };
 
   return (
-        <>{currentMovie?.activeDate === cookies.date ?
-        <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} />
-        :
+    <>{currentMovie?.activeDate === cookies.date ?
+      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} />
+      :
+      <div>
         <div>
+          <h1>Guesses Remaining: {numGuesses}</h1>
           <div>
-            <h1>Guesses Remaining: {numGuesses}</h1>
-            <div>
-              <img className="image" src={currentMovie?.image} alt="" />
-            </div>
-            <h3>{hintOne}</h3>
-            <h3>{hintTwo}</h3>
-            <h3>{hintThree}</h3>
-            <SubmitForm handleSubmit={handleSubmit}
-              incomingGuess={incomingGuess}
-              handleChange={handleChange}
-              minLengthAnswer={minLengthAnswer} />
+            <img className="image" src={currentMovie?.image} alt="" />
           </div>
+          <h3>{hintOne}</h3>
+          <h3>{hintTwo}</h3>
+          <h3>{hintThree}</h3>
+          <SubmitForm handleSubmit={handleSubmit}
+            incomingGuess={incomingGuess}
+            handleChange={handleChange}
+            minLengthAnswer={minLengthAnswer} />
         </div>
-      }
-      </>
+      </div>
+    }
+    </>
   );
 }

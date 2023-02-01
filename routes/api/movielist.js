@@ -4,6 +4,6 @@ const movieListCtrl = require('../../controllers/api/movielist');
 
 router.get('/', movieListCtrl.index);
 
-router.put('/:id', movieListCtrl.updateBool);
+router.put('/:id', movieListCtrl.updateCount);
 
 module.exports = router;

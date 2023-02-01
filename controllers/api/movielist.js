@@ -2,7 +2,7 @@ const MovieList = require('../../models/movielist');
 
 module.exports = {
   index,
-  updateBool,
+  updateCount,
 }
 
 async function index(req, res) {
@@ -12,10 +12,11 @@ async function index(req, res) {
   res.json(todayItem)
 }
 
-async function updateBool(req,res) {
+async function updateCount(req,res) {
   let id = req.body._id;
   const filter = { _id: id };
-  const update = { completed: req.body.completed };
+  const update = { count: req.body.count };
+  console.log(update, "count")
   const updatedItem = await MovieList.findOneAndUpdate(filter, update);
   res.json(updatedItem)
 }
