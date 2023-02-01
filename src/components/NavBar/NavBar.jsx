@@ -12,7 +12,7 @@ export default function NavBar({ user, setUser, score }) {
       {/* <span>Welcome, {user.name}</span> */}
       {/* &nbsp;|&nbsp; */}
       <span>Current Score: {score}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+      {/* &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link> */}
     </nav>
   );
 }
