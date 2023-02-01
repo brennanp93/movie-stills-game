@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import ResultPage from "../../components/ResultPage/ResultPage";
 import Fuse from "fuse.js";
@@ -8,7 +8,7 @@ import { updateBoolean } from "../../utilities/movielist-api";
 import { useCookies } from 'react-cookie';
 // const cookies = new Cookies();
 
-export default function MainPage({ score, setScore, dailyQuestion, answerKey }) {
+export default function MainPage({ score, setScore, dailyQuestion, answerKey, cookies, setCookies }) {
   const [prompt, setPrompt] = useState('');
   const [numGuesses, setNumGuesses] = useState(3);
   const [incomingGuess, setIncomingGuess] = useState('')
@@ -16,20 +16,22 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   const [hintOne, setHintOne] = useState('')
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
-  const [cookies, setCookies, removeCookies] = useCookies(['date'])
+  // const [cookies, setCookies, removeCookies] = useCookies(['date'])
   // const [winner, setWinner] = useState(false);
   // const [buttonPrompt, setButtonPrompt] = useState('Next Question');
   // const [gameOver, setGameOver] = useState(false);
-  // const [dailyLimit, setDailyLimit] = useState(0)
+  // const [dailyQuestion1, setDailyQuestion] = useState(dailyQuestion)
 
-  let currentMovie = quizlist[index]
-  // let currentMovie = dailyQuestion
-  // console.log(cookies)
-  let correctAnswer = currentMovie.movie;
+  // let currentMovie = quizlist[index]
+
+  let currentMovie = dailyQuestion
+
+  let correctAnswer = currentMovie?.movie;
+
   const todayDate = new Date().toLocaleDateString();
   let midnight = new Date();
   midnight.setHours(23, 59, 59, 0)
-  let minLengthAnswer = Math.floor(correctAnswer.length * .66)
+  let minLengthAnswer = Math.floor(correctAnswer?.length * .66)
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -41,12 +43,9 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
     const result = fuse.search(incomingGuess)[0].item.answer;
     /*------*/
     if (result === correctAnswer) {
-      // setWinner(true);
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
       setCookies('date', todayDate, { expires: midnight })
-      // currentMovie.completed = true;
-
       if (numGuesses === 3) {
         setScore(score + 4)
       } else if (numGuesses === 2) {
@@ -74,11 +73,9 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
     }
     if (result !== correctAnswer && numGuesses === 0) {
       setPrompt("Aw Shucks. Better luck tomorrow!");
-      // setWinner(true);
-      // quizlist.completed = true;
       setCookies('date', todayDate, { expires: midnight })
     }
-    // updateBoolean(currentMovie, currentMovie._id)
+
   };
 
   function handleChange(evt) {
@@ -86,28 +83,26 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
     setIncomingGuess(newGuess)
   };
 
-
   return (
-    <>{currentMovie.activeDate === cookies.date ?
-      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} />
-      :
-      <div>
+        <>{currentMovie?.activeDate === cookies.date ?
+        <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} />
+        :
         <div>
-          <h1>Guesses Remaining: {numGuesses}</h1>
           <div>
-            <img className="image" src={currentMovie.image} alt="" />
+            <h1>Guesses Remaining: {numGuesses}</h1>
+            <div>
+              <img className="image" src={currentMovie?.image} alt="" />
+            </div>
+            <h3>{hintOne}</h3>
+            <h3>{hintTwo}</h3>
+            <h3>{hintThree}</h3>
+            <SubmitForm handleSubmit={handleSubmit}
+              incomingGuess={incomingGuess}
+              handleChange={handleChange}
+              minLengthAnswer={minLengthAnswer} />
           </div>
-          <h3>{hintOne}</h3>
-          <h3>{hintTwo}</h3>
-          <h3>{hintThree}</h3>
-          <SubmitForm handleSubmit={handleSubmit}
-            incomingGuess={incomingGuess}
-            handleChange={handleChange}
-            minLengthAnswer={minLengthAnswer} />
         </div>
-      </div>
-    }
-    </>
-
+      }
+      </>
   );
 }

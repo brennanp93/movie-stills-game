@@ -9,16 +9,25 @@ import NavBar from '../../components/NavBar/NavBar';
 import MainPage from '../MainPage/MainPage';
 import * as answerKeyAPI from '../../utilities/answerkey-api'
 import * as movieListAPI from '../../utilities/movielist-api'
+import { useCookies } from 'react-cookie';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [score, setScore] = useState(0);
   const [answerKey, setAnswerKey] = useState();
   const [dailyQuestion, setDailyQuestion] = useState();
+  const [cookies, setCookies, removeCookies] = useCookies(['date'])
+  const [score, setScore] = useState(() => {
+    let savedScore = localStorage.getItem('score')
+    return parseInt(savedScore) || 0;
+  });
 // console.log(answerKey, "APP.JS")
   async function updateBoolean(booleanData, id) {
     await movieListAPI.updateBoolean(booleanData, id);
   }
+  
+  useEffect(() => {
+    localStorage.setItem('score', score)
+  }, [score])
 
   useEffect(function () {
     async function getDailyItems() {
@@ -41,7 +50,9 @@ export default function App() {
           setScore={setScore}
           dailyQuestion={dailyQuestion}
           answerKey={answerKey}
-          updateBoolean={updateBoolean} />
+          updateBoolean={updateBoolean}
+          cookies={cookies}
+          setCookies={setCookies} />
           {/* <Routes> */}
           {/* Route components in here */}
           {/* <Route path="/orders/new" element={<NewOrderPage />} /> */}
