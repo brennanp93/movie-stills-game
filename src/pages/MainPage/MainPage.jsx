@@ -15,7 +15,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
   const [incomingGuess, setIncomingGuess] = useState('')
   const [winner, setWinner] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  // const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
+  const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
   const [hintOne, setHintOne] = useState('')
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
@@ -24,11 +24,11 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
 
   // let currentMovie = quizlist[index]
   let currentMovie = dailyQuestion
-  console.log(currentMovie)
+  // console.log(currentMovie)
   let correctAnswer = currentMovie.movie;
   const todayDate = new Date().toLocaleDateString();
   let midnight = new Date();
-  midnight.setHours(23,59,59,0)
+  midnight.setHours(23, 59, 59, 0)
   let minLengthAnswer = Math.floor(correctAnswer.length * .66)
 
   function handleSubmit(evt) {
@@ -45,7 +45,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       setWinner(true);
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
-      setCookies('date', todayDate, {expires: midnight} )
+      setCookies('date', todayDate, { expires: midnight })
       // currentMovie.completed = true;
 
       if (numGuesses === 3) {
@@ -81,7 +81,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       setPrompt("Aw Shucks. Better luck tomorrow!");
       setWinner(true);
       quizlist.completed = true;
-      setCookies('date', todayDate, {expires: midnight} )
+      setCookies('date', todayDate, { expires: midnight })
     }
     // updateBoolean(currentMovie, currentMovie._id)
   };
@@ -95,7 +95,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
 
   function nextQuestion() {
     if (dailyLimit === 3) {
-      setGameOver(true)
+      // setGameOver(true)
       return
     }
     // if (quizlist.length <= 1) {
@@ -117,7 +117,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
 
   return (
     <>{currentMovie.activeDate === cookies.date ?
-      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer}/>
+      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} />
       :
       <div>
         <div>
@@ -128,17 +128,10 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
           <h3>{hintOne}</h3>
           <h3>{hintTwo}</h3>
           <h3>{hintThree}</h3>
-          {!winner ?
-            <SubmitForm handleSubmit={handleSubmit}
-              incomingGuess={incomingGuess}
-              handleChange={handleChange}
-              minLengthAnswer={minLengthAnswer} />
-            :
-            <>
-              <h2>{correctAnswer}</h2>
-              <button onClick={nextQuestion}>Next Question</button>
-            </>
-          }
+          <SubmitForm handleSubmit={handleSubmit}
+            incomingGuess={incomingGuess}
+            handleChange={handleChange}
+            minLengthAnswer={minLengthAnswer} />
         </div>
       </div>
     }
