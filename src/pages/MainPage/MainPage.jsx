@@ -111,7 +111,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
 console.log(numGuesses)
   return (
     <>{currentMovie?.activeDate === cookies.date ?
-      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} />
+      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} currentMovie={currentMovie} />
       :
       <div>
         <div>
