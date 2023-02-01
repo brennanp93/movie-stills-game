@@ -108,7 +108,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     const newGuess = evt.target.value
     setIncomingGuess(newGuess)
   };
-console.log(numGuesses)
+
   return (
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} currentMovie={currentMovie} />
