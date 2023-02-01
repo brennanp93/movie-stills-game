@@ -6,7 +6,8 @@ const movieListSchema = new Schema({
   movie: String, 
   hints: [String],
   completed: Boolean,
-  activeDate: String
+  activeDate: String,
+  count: Number
 }, {
   timestamps: true
 });

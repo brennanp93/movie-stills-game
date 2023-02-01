@@ -10,21 +10,21 @@ import { useCookies } from 'react-cookie';
 
 export default function MainPage({ score, setScore, dailyQuestion, answerKey }) {
   const [prompt, setPrompt] = useState('');
-  // const [buttonPrompt, setButtonPrompt] = useState('Next Question');
   const [numGuesses, setNumGuesses] = useState(3);
   const [incomingGuess, setIncomingGuess] = useState('')
-  const [winner, setWinner] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
   const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
   const [hintOne, setHintOne] = useState('')
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
-  const [dailyLimit, setDailyLimit] = useState(0)
   const [cookies, setCookies, removeCookies] = useCookies(['date'])
+  // const [winner, setWinner] = useState(false);
+  // const [buttonPrompt, setButtonPrompt] = useState('Next Question');
+  // const [gameOver, setGameOver] = useState(false);
+  // const [dailyLimit, setDailyLimit] = useState(0)
 
-  // let currentMovie = quizlist[index]
-  let currentMovie = dailyQuestion
-  // console.log(currentMovie)
+  let currentMovie = quizlist[index]
+  // let currentMovie = dailyQuestion
+  // console.log(cookies)
   let correctAnswer = currentMovie.movie;
   const todayDate = new Date().toLocaleDateString();
   let midnight = new Date();
@@ -41,8 +41,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
     const result = fuse.search(incomingGuess)[0].item.answer;
     /*------*/
     if (result === correctAnswer) {
-      setDailyLimit(dailyLimit + 1)
-      setWinner(true);
+      // setWinner(true);
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
       setCookies('date', todayDate, { expires: midnight })
@@ -61,59 +60,32 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey }) 
       };
 
     } else if (result !== correctAnswer && numGuesses === 3) {
-      // setPrompt('keep guessing');
       setNumGuesses(numGuesses - 1);
       setHintOne('Hint One: ' + currentMovie.hints[0])
       setIncomingGuess('');
     } else if (result !== correctAnswer && numGuesses === 2) {
       setNumGuesses(numGuesses - 1);
-      setHintOne('Hint One: ' + currentMovie.hints[0])
       setHintTwo('Hint Two: ' + currentMovie.hints[1])
       setIncomingGuess('');
     } else if (result !== correctAnswer && numGuesses === 1) {
       setNumGuesses(numGuesses - 1);
-      setHintOne('Hint One: ' + currentMovie.hints[0])
-      setHintTwo('Hint Two: ' + currentMovie.hints[1])
       setHintThree('Hint Three: ' + currentMovie.hints[2])
       setIncomingGuess('');
     }
     if (result !== correctAnswer && numGuesses === 0) {
       setPrompt("Aw Shucks. Better luck tomorrow!");
-      setWinner(true);
-      quizlist.completed = true;
+      // setWinner(true);
+      // quizlist.completed = true;
       setCookies('date', todayDate, { expires: midnight })
     }
     // updateBoolean(currentMovie, currentMovie._id)
   };
-
-
 
   function handleChange(evt) {
     const newGuess = evt.target.value
     setIncomingGuess(newGuess)
   };
 
-  function nextQuestion() {
-    if (dailyLimit === 3) {
-      // setGameOver(true)
-      return
-    }
-    // if (quizlist.length <= 1) {
-    //   setPrompt('game over')
-    //   setButtonPrompt('final question')
-    //   setGameOver(true);
-    //   return
-    // };
-    // quizlist.splice(index, 1)
-    // setIndex(Math.floor(Math.random() * quizlist.length));
-    setWinner(false);
-    setNumGuesses(3);
-    setHintOne('')
-    setHintTwo('')
-    setHintThree('')
-    setIncomingGuess('');
-
-  }
 
   return (
     <>{currentMovie.activeDate === cookies.date ?
