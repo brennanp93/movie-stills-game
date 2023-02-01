@@ -10,6 +10,7 @@ import MainPage from '../MainPage/MainPage';
 import * as answerKeyAPI from '../../utilities/answerkey-api'
 import * as movieListAPI from '../../utilities/movielist-api'
 import { useCookies } from 'react-cookie';
+import Footer from '../../components/Footer/Footer';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -53,6 +54,7 @@ export default function App() {
           updateCount={updateCount}
           cookies={cookies}
           setCookies={setCookies} />
+          <Footer />
         </>
         {/* : */}
         {/* <AuthPage setUser={setUser} /> */}
