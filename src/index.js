@@ -11,7 +11,7 @@ root.render(
     <Router>
     <CookiesProvider>
       <App />
-   </CookiesProvider>,
+   </CookiesProvider>
       </Router>
   </React.StrictMode>
 );

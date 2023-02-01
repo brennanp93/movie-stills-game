@@ -53,12 +53,6 @@ export default function App() {
           updateCount={updateCount}
           cookies={cookies}
           setCookies={setCookies} />
-          {/* <Routes> */}
-          {/* Route components in here */}
-          {/* <Route path="/orders/new" element={<NewOrderPage />} /> */}
-          {/* <Route path="/orders" element={<OrderHistoryPage />} /> */}
-          {/* <Route path="/game" element={<MainPage />} /> */}
-          {/* </Routes> */}
         </>
         {/* : */}
         {/* <AuthPage setUser={setUser} /> */}
