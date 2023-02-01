@@ -15,7 +15,7 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [answerKey, setAnswerKey] = useState();
   const [dailyQuestion, setDailyQuestion] = useState();
-  const [cookies, setCookies, removeCookies] = useCookies(['date'])
+  const [cookies, setCookies] = useCookies(['date'])
   const [score, setScore] = useState(() => {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
@@ -31,19 +31,19 @@ export default function App() {
 
   useEffect(function () {
     async function getDailyItems() {
-      if (user) {
+      // if (user) {
       const entireAnswerKey = await answerKeyAPI.getAll();
       const todayItem = await movieListAPI.getAll()
       setAnswerKey(entireAnswerKey[0].answers)
       setDailyQuestion(todayItem[0])
-    }
+    // }
   };
     getDailyItems();
-  }, [user])
+  }, [])
 
   return (
     <main className="App">
-      {user ?
+      {/* {user ? */}
         <>
           <NavBar user={user} setUser={setUser} score={score} />
           <MainPage score={score} 
@@ -60,9 +60,9 @@ export default function App() {
           {/* <Route path="/game" element={<MainPage />} /> */}
           {/* </Routes> */}
         </>
-        :
-        <AuthPage setUser={setUser} />
-      }
+        {/* : */}
+        {/* <AuthPage setUser={setUser} /> */}
+      {/* } */}
     </main>
   );
 }

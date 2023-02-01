@@ -1,30 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import ResultPage from "../../components/ResultPage/ResultPage";
 import Fuse from "fuse.js";
-import { quizlist } from "../../data";
-import { updateBoolean } from "../../utilities/movielist-api";
-// import cookies from 'react-cookies'
-import { useCookies } from 'react-cookie';
-// const cookies = new Cookies();
+// import { quizlist } from "../../data";
+
+
 
 export default function MainPage({ score, setScore, dailyQuestion, answerKey, cookies, setCookies, updateCount }) {
   const [prompt, setPrompt] = useState('');
   const [numGuesses, setNumGuesses] = useState(3);
   const [incomingGuess, setIncomingGuess] = useState('')
-  const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
+  // const [index, setIndex] = useState(Math.floor(Math.random() * quizlist.length))
   const [hintOne, setHintOne] = useState('')
   const [hintTwo, setHintTwo] = useState('')
   const [hintThree, setHintThree] = useState('')
   // const [cookies, setCookies, removeCookies] = useCookies(['date'])
   // const [winner, setWinner] = useState(false);
   // const [buttonPrompt, setButtonPrompt] = useState('Next Question');
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   // const [dailyQuestion1, setDailyQuestion] = useState(dailyQuestion)
 
   // let currentMovie = quizlist[index]
   let currentMovie = dailyQuestion
-  // console.log(currentMovie)
+  console.log(currentMovie)
 
   let correctAnswer = currentMovie?.movie;
 

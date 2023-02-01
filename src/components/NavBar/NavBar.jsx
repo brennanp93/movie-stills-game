@@ -9,8 +9,8 @@ export default function NavBar({ user, setUser, score }) {
 
   return (
     <nav>
-      <span>Welcome, {user.name}</span>
-      &nbsp;|&nbsp;
+      {/* <span>Welcome, {user.name}</span> */}
+      {/* &nbsp;|&nbsp; */}
       <span>Current Score: {score}</span>
       &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>
