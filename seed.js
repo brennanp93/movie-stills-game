@@ -55,6 +55,14 @@ const AnswerKey = require('./models/answerkey');
       activeDate: '2/5/2023',
       count: 0,
     },
+    {
+      image: 'https://i.imgur.com/5Trh7Fc.jpg',
+      movie: 'Full Metal Jacket',
+      hints: ['Released: 1987', 'Genre: Drama, War', 'Directed by Stanley Kubrick'],
+      completed: false,
+      activeDate: '2/6/2023',
+      count: 0,
+    },
   ]);
   await AnswerKey.deleteMany({});
   const answerKey = await AnswerKey.create([{
