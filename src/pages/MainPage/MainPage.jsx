@@ -43,7 +43,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   midnight.setHours(23, 59, 59, 0)
   let minLengthAnswer = Math.floor(correctAnswer?.length * .66)
 
-
+console.log(todayDate)
   // function handleUpdateBoolean(idx, id) {
   //   updateCount(dailyQuestion, id);
   // };
