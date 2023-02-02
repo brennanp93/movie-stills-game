@@ -1,0 +1,56 @@
+.form-container {
+  padding: 3vmin;
+  /* background-color: var(--tan-1);*/
+  border: 1px solid #17252A; 
+  border-radius: 1vmin;
+
+
+}
+form  {
+  grid-template-columns: 2fr 1fr;
+  /* border: solid #17252A 1px; */
+
+  /* width: 75%; */
+  border-radius: 5px;
+  display: grid;
+  gap: 1.25vmin;
+  color: #17252A;
+  margin: 1vmin;
+}
+
+input {
+  padding: 1vmin;
+  font-size: 2vmin;
+  border: .1vmin solid #2B7A78;
+  border-radius: .5vmin;
+  color: #17252A;
+  background-image: none !important; /* prevent lastpass */
+  outline: none;
+}
+
+button {
+  /* margin: 1vmin; */
+  margin: 1vmin;
+  color: #feffff;
+  background-color: #17252A;
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: .1vmin solid #feffff;
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+}
+
+
+button:disabled, form:invalid button[type="submit"] {
+  cursor: not-allowed;
+  background-color: #feffff;
+  color: #DEF2F1;
+}
+
+button[type="submit"] {
+  grid-column: span 1;
+  margin: 1vmin 0 0;
+}

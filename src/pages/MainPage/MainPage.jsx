@@ -4,6 +4,7 @@ import ResultPage from "../../components/ResultPage/ResultPage";
 import Fuse from "fuse.js";
 import { quizlist } from "../../data";
 // import { quizlist } from "../../data";
+import "./MainPage.css"
 
 
 
@@ -113,7 +114,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} currentMovie={currentMovie} />
       :
-      <div>
+      <div className="game-box">
         <div>
           <h1>Guesses Remaining: {numGuesses}</h1>
           <div>

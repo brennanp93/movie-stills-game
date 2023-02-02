@@ -2,7 +2,7 @@ import './ResultPage.css'
 export default function ResultPage({ prompt, score, correctAnswer, currentMovie }) {
   return (
     <>
-      <div style={{ border: 'solid black' }}>
+      <div className='game-box '>
         <h1>{prompt}</h1>
         <h2>The Correct Answer Was:</h2>
         <h2><strong>{correctAnswer}</strong></h2>

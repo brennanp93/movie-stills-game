@@ -1,4 +1,10 @@
 .image{
-  max-width: 100%;
+  max-width: 75%;
   border-radius: 10px;
+}
+.game-box {
+  border: solid #17252A 1px;
+  border-radius:10px;
+  background-color: #DEF2F1;
+  padding: .5em;
 }
