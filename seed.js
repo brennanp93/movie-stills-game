@@ -68,7 +68,6 @@ const AnswerKey = require('./models/answerkey');
   const answerKey = await AnswerKey.create([{
     answers: [
       { answer: 'There Will Be Blood' },
-      { answer: 'Full Metal Jacket' },
       { answer: 'Taxi Driver' },
       { answer: 'Shutter Island' },
       { answer: 'Gone Girl' },
