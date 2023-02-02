@@ -21,7 +21,7 @@ export default function App() {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
   });
-  console.log(dailyQuestion, "APP.JS")
+
   async function updateCount(booleanData, id) {
     await movieListAPI.updateCount(booleanData, id);
   }
@@ -32,16 +32,14 @@ export default function App() {
 
   useEffect(function () {
     async function getDailyItems() {
-      // if (user) {
       const entireAnswerKey = await answerKeyAPI.getAll();
       const todayItem = await movieListAPI.getAll()
       setAnswerKey(entireAnswerKey[0].answers)
       setDailyQuestion(todayItem[0])
-      // }
     };
     getDailyItems();
-  }, [])
-
+  }, [score])
+//might need to fix this ^^ [score]
   return (
     <main className="App">
       {/* {user ? */}
