@@ -21,11 +21,11 @@ export default function App() {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
   });
-// console.log(answerKey, "APP.JS")
+  console.log(dailyQuestion, "APP.JS")
   async function updateCount(booleanData, id) {
     await movieListAPI.updateCount(booleanData, id);
   }
-  
+
   useEffect(() => {
     localStorage.setItem('score', score)
   }, [score])
@@ -37,27 +37,27 @@ export default function App() {
       const todayItem = await movieListAPI.getAll()
       setAnswerKey(entireAnswerKey[0].answers)
       setDailyQuestion(todayItem[0])
-    // }
-  };
+      // }
+    };
     getDailyItems();
   }, [])
 
   return (
     <main className="App">
       {/* {user ? */}
-        <>
-          <NavBar user={user} setUser={setUser} score={score} />
-          <MainPage score={score} 
+      <>
+        <NavBar user={user} setUser={setUser} score={score} />
+        <MainPage score={score}
           setScore={setScore}
           dailyQuestion={dailyQuestion}
           answerKey={answerKey}
           updateCount={updateCount}
           cookies={cookies}
           setCookies={setCookies} />
-          <Footer />
-        </>
-        {/* : */}
-        {/* <AuthPage setUser={setUser} /> */}
+        <Footer />
+      </>
+      {/* : */}
+      {/* <AuthPage setUser={setUser} /> */}
       {/* } */}
     </main>
   );
