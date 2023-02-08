@@ -3,8 +3,6 @@
   /* background-color: var(--tan-1);*/
   border: 1px solid #17252A; 
   border-radius: 1vmin;
-
-
 }
 form  {
   grid-template-columns: 2fr 1fr;

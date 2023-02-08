@@ -63,6 +63,30 @@ const AnswerKey = require('./models/answerkey');
       activeDate: '2/6/2023',
       count: 0,
     },
+    {
+      image: 'https://i.imgur.com/Ojpt6uJ.jpg',
+      movie: 'Dunkirk',
+      hints: ['Realeased in 2017','City in France', 'Directed by Christopher Nolan'],
+      completed: false,
+      activeDate: '2/7/2023',
+      count: 0,
+    },
+    {
+      image: 'https://i.imgur.com/Cd5t5ui.jpg',
+      movie: "A Knight's Tale",
+      hints: ['Released: 2001', 'Supporting Cast: Alan Tudyk, Paul Bettany', 'Starring: Heath Ledger'],
+      completed: false,
+      activeDate: '2/8/2023',
+      count: 0,
+    },
+    {
+      image: 'https://i.imgur.com/BLVyKA4.png',
+      movie: "Ex Machina",
+      hints: ['Released: 2014', 'Genre: Drama, Sci-Fi, Thriller', 'Starring: Domhnall Gleeson, Oscar Isaac'],
+      completed: false,
+      activeDate: '2/9/2023',
+      count: 0,
+    },
   ]);
   await AnswerKey.deleteMany({});
   const answerKey = await AnswerKey.create([{
@@ -81,6 +105,9 @@ const AnswerKey = require('./models/answerkey');
       { answer: 'Midsommar' },
       { answer: 'Parasite' },
       { answer: 'The Shawshank Redemption' },
+      { answer: 'Dunkirk' },
+      { answer: 'Ex Machina' },
+      { answer: "A Knight's Tale" },
       { answer: 'The Godfather' }],
   }]);
   console.log(movieList);

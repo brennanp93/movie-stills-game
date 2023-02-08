@@ -1,9 +1,9 @@
-import './Footer.css'
+// import './Footer.css'
 
 export default function Footer() {
   return (
-    <footer>
-      <div className='game-box' >
+    <footer className="footy">
+      <div >
         &copy; {new Date().getFullYear()} Copyright:
         <a 
         // className='text-dark' href='https://github.com/brennanp93'

@@ -3,9 +3,11 @@ import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
-import { quizlist } from "../../data";
+
 // import { quizlist } from "../../data";
-import "./MainPage.css"
+// import answerkey from "../../../models/answerkey";
+// import { quizlist } from "../../data";
+// import "./MainPage.css"
 
 
 
@@ -16,21 +18,30 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     let savedGuesses = localStorage.getItem('numGuesses');
     return (parseInt(savedGuesses) ?? 3)
   });
-
-  useEffect(() => {
-    localStorage.setItem('numGuesses', numGuesses);
-    // localStorage.setItem('hintOne', hintOne);
-  }, [numGuesses])
-
-  let currentMovie = dailyQuestion
-  console.log(numGuesses)
-
-  let correctAnswer = currentMovie?.movie;
+  // let numGuessesTimeOut = new Date()
 
   const todayDate = new Date().toLocaleDateString();
   let midnight = new Date();
   midnight.setHours(23, 59, 59, 0)
+  // midnight.setHours(10, 35, 0, 0)
+
+
+  let currentMovie = dailyQuestion
+
+  useEffect(() => {
+    localStorage.setItem('numGuesses', numGuesses);
+  }, [numGuesses])
+
+  // useEffect(() => {
+  //   localStorage.setItem('numGuesses', 3);
+  // }, [!midnight])
+
+  let correctAnswer = currentMovie?.movie;
+
+  console.log(midnight)
+  // console.log(midnight === new Date(), 'midnight')
   let minLengthAnswer = Math.floor(correctAnswer?.length * .66)
+
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -38,11 +49,11 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     const options = {
       includeScore: true,
       keys: [{ name: 'answer' }],
-      threshold: 0.6,
     };
     const fuse = new Fuse(answerKey, options)
     const possibleResult = fuse.search(incomingGuess)[0]?.item.answer;
     let result;
+
     if (possibleResult === correctAnswer) {
       result = correctAnswer;
     } else { result = 'caterpillar' }
@@ -51,7 +62,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
       setNumGuesses(3)
-      setCookies('date', todayDate, { expires: midnight })
+  
+      setCookies('date', todayDate, { expires: midnight });
       currentMovie.count += 1;
       if (numGuesses === 3) {
         setScore(score + 4)
@@ -83,6 +95,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     }
     // setNumGuesses(3)
     updateCount(currentMovie, currentMovie._id)
+
   };
 
   function handleChange(evt) {
@@ -91,12 +104,13 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   };
 
   return (
+    // <>{true ?
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} currentMovie={currentMovie} />
       :
       <div className="game-box">
         <div>
-          <h1>Guesses Remaining: {numGuesses}</h1>
+          <h1>Guesses Remaining:  {numGuesses}</h1>
           <div>
             <img className="image" src={currentMovie?.image} alt="" />
 

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 
 // import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import './App.css';
+// import './App.css';
+import './NewApp.css';
 import AuthPage from '../AuthPage/AuthPage';
 
 import NavBar from '../../components/NavBar/NavBar';
@@ -39,11 +40,11 @@ export default function App() {
     };
     getDailyItems();
   }, [score])
-//might need to fix this ^^ [score]
+  //might need to fix this ^^ [score]
+  
   return (
-    <main className="App">
-      {/* {user ? */}
-      <>
+    <>
+      <main className="App">
         <NavBar user={user} setUser={setUser} score={score} />
         <MainPage score={score}
           setScore={setScore}
@@ -53,10 +54,7 @@ export default function App() {
           cookies={cookies}
           setCookies={setCookies} />
         <Footer />
-      </>
-      {/* : */}
-      {/* <AuthPage setUser={setUser} /> */}
-      {/* } */}
-    </main>
+      </main>
+    </>
   );
 }
