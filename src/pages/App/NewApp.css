@@ -22,6 +22,7 @@ form {
   display: grid;
   gap: 1.25vmin;
   color: #17252A;
+  margin: 0 10% 0 10%;
 
 }
 
@@ -59,12 +60,39 @@ button {
   cursor: pointer;
 }
 
-header,
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(227, 227, 227);
+  padding: 1%;
+  /* height: 90%; */
+  font-size: 1em;
+}
+.title {
+  grid-column: 2 / span 1;
+  /* align-items: center;
+  text-align: center;
+  justify-self: stretch; */
+}
+
+header > a {
+  margin-right: auto;
+  margin-left: 3%;
+}
+
+header > div:last-child {
+  margin-left: auto;
+  margin-right: 3%;
+  justify-self: center;
+}
+
 footer {
   display: grid;
   align-items: center;
   text-align: center;
-  background-color: rgb(176, 135, 135);
+  background-color: rgb(227, 227, 227);
   /* width: 100%; */
   padding: 1%;
   height: 2em;
@@ -81,7 +109,7 @@ footer {
 } */
 
 .image {
-  max-width: 100%;
+  max-width: 80%;
   border-radius: 10px;
 }
 

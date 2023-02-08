@@ -22,7 +22,7 @@ export default function SubmitForm({ handleSubmit, incomingGuess, handleChange, 
           value={incomingGuess}
           placeholder="Enter Your Guess"
           onChange={handleChange}
-          minLength={minLengthAnswer}
+          minLength={minLengthAnswer.toString()}
           required={true}
         />
         <button type="submit"> Submit Answer</button>

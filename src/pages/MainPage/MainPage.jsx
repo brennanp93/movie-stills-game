@@ -18,15 +18,14 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     let savedGuesses = localStorage.getItem('numGuesses');
     return (parseInt(savedGuesses) ?? 3)
   });
-  // let numGuessesTimeOut = new Date()
 
   const todayDate = new Date().toLocaleDateString();
   let midnight = new Date();
   midnight.setHours(23, 59, 59, 0)
-  // midnight.setHours(10, 35, 0, 0)
-
 
   let currentMovie = dailyQuestion
+  let correctAnswer = currentMovie?.movie;
+  let minLengthAnswer = Math?.floor(correctAnswer?.length * .66)
 
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses);
@@ -34,13 +33,11 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
 
   // useEffect(() => {
   //   localStorage.setItem('numGuesses', 3);
-  // }, [!midnight])
+  // }, [cookies])
 
-  let correctAnswer = currentMovie?.movie;
 
-  console.log(midnight)
+
   // console.log(midnight === new Date(), 'midnight')
-  let minLengthAnswer = Math.floor(correctAnswer?.length * .66)
 
 
   function handleSubmit(evt) {
@@ -53,7 +50,6 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     const fuse = new Fuse(answerKey, options)
     const possibleResult = fuse.search(incomingGuess)[0]?.item.answer;
     let result;
-
     if (possibleResult === correctAnswer) {
       result = correctAnswer;
     } else { result = 'caterpillar' }
@@ -62,7 +58,6 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
       setNumGuesses(3)
-  
       setCookies('date', todayDate, { expires: midnight });
       currentMovie.count += 1;
       if (numGuesses === 3) {
@@ -76,24 +71,20 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       }
     } else if (result !== correctAnswer && numGuesses === 3) {
       setNumGuesses(numGuesses - 1);
-      // setCookies('numGuesses', numGuesses, { expires: midnight })
-      // setHintOne('Hint One: ' + currentMovie.hints[0])
       setIncomingGuess('');
     } else if (result !== correctAnswer && numGuesses === 2) {
       setNumGuesses(numGuesses - 1);
-      // setHintTwo('Hint Two: ' + currentMovie.hints[1])
       setIncomingGuess('');
     } else if (result !== correctAnswer && numGuesses === 1) {
       setNumGuesses(numGuesses - 1);
-      // setHintThree('Hint Three: ' + currentMovie.hints[2])
       setIncomingGuess('');
     }
     if (result !== correctAnswer && numGuesses === 0) {
       setPrompt("Aw Shucks. Better luck tomorrow!");
       setCookies('date', todayDate, { expires: midnight });
       currentMovie.count = currentMovie.count + 1;
+      setNumGuesses(3)
     }
-    // setNumGuesses(3)
     updateCount(currentMovie, currentMovie._id)
 
   };
