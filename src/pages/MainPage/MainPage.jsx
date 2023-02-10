@@ -90,22 +90,22 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       />
       :
       <div className="game-box">
-        <div>
-          <h1>Guesses Remaining:  {numGuesses}</h1>
+        <div className="game-box-grids">
+          <h2>Guesses Remaining:  {numGuesses}</h2>
           <div>
             <img className="image" src={currentMovie?.image} alt="" />
             {/* <img className="image" src='v' alt="" /> */}
 
           </div>
-          <HintPage
-            numGuesses={numGuesses}
-            currentMovie={currentMovie}
-          />
           <SubmitForm
             handleSubmit={handleSubmit}
             incomingGuess={incomingGuess}
             handleChange={handleChange}
             minLengthAnswer={minLengthAnswer}
+          />
+          <HintPage
+            numGuesses={numGuesses}
+            currentMovie={currentMovie}
           />
         </div>
       </div>
