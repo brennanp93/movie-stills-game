@@ -56,6 +56,10 @@ img {
   max-width: 50%;
   border-radius: 10px;
 }
+ .logo {
+  max-width: 75px;
+  max-height: 75px;
+ }
 
 form{
 display: grid;
@@ -194,7 +198,10 @@ grid-template-rows: 1fr 3fr 1fr ;
   border-radius: 1vmin;
 } */
 
-@media (max-width: 500px) {
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
   .App {
     display: flex;
     flex-direction: column;
