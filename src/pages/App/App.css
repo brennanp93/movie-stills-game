@@ -1,44 +1,136 @@
 .App {
-  text-align: center;
   display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: auto 1fr auto;
+  /* flex-direction: column; */
+  align-items: center;
+  width: 100%;
+  color: rgb(89, 89, 89);
+  margin: 0;
+  height: 100vh;
+  font-family: 'Abril Fatface', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+h1,
+form {
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+form {
+  grid-template-columns: 2fr 1fr;
+  border-radius: 5px;
+  display: grid;
+  gap: 1.25vmin;
+  color:  rgb(89, 89, 89);
+  margin: 0 10% 0 10%;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.game-box {
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+
+}
+
+input {
+  padding: 1vmin;
+  font-size: 2vmin;
+  border: .1vmin solid  rgb(89, 89, 89);
+  border-radius: .5vmin;
+  color: #17252A;
+  background-image: none !important;
+  /* prevent lastpass */
+  outline: none;
+}
+
+button {
+  /* margin: 1vmin; */
   color: white;
+
+  font-size: 2vmin;
+  height: 100%;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: .1vmin solid #feffff;
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(159, 159, 159);
+}
+button:disabled, form:invalid button[type="submit"] {
+  cursor: not-allowed;
+  background-color: rgb(244, 244, 244);
+  color: rgb(184, 184, 184) ;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* .image{
-  max-width: 100%;
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  border-bottom: solid  rgb(89, 89, 89) 2px;
+  color:  rgb(89, 89, 89);
+  padding: 1%;
   border-radius: 10px;
+  /* height: 90%; */
+  font-size: 1em;
+}
+.title {
+  grid-column: 2 / span 1;
+  /* align-items: center;
+  text-align: center;
+  justify-self: stretch; */
+}
+
+header > a {
+  margin-right: auto;
+  margin-left: 3%;
+}
+
+header > div:last-child {
+  margin-left: auto;
+  margin-right: 3%;
+  justify-self: center;
+  color: rgb(89, 89, 89)
+}
+
+footer {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  border-top: solid rgb(89, 89, 89) 2px;
+  color:  rgb(89, 89, 89);
+  border-radius: 10px;
+
+
+  /* width: 100%; */
+  padding: 1%;
+  height: 2em;
+  font-size: 1em;
+}
+
+/* footer {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(176, 135, 135);
+  height: 2em;
+  font-size: 2vmin;
 } */
+
+.image {
+  max-width: 80%;
+  border-radius: 10px;
+}
+
+.form-container {
+  padding: 1%;
+  /* background-color: lightblue; */
+  /* border: 1px solid #17252A;  */
+  border-radius: 1vmin;
+}

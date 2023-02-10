@@ -1,4 +1,3 @@
-// import './ResultPage.css'
 export default function ResultPage({ prompt, score, correctAnswer, currentMovie }) {
   return (
     <>

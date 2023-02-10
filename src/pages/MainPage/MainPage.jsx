@@ -4,13 +4,6 @@ import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
 
-// import { quizlist } from "../../data";
-// import answerkey from "../../../models/answerkey";
-// import { quizlist } from "../../data";
-// import "./MainPage.css"
-
-
-
 export default function MainPage({ score, setScore, dailyQuestion, answerKey, cookies, setCookies, updateCount }) {
   const [prompt, setPrompt] = useState('');
   const [incomingGuess, setIncomingGuess] = useState('')
@@ -19,26 +12,20 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     return (parseInt(savedGuesses) ?? 3)
   });
 
+  //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
+  //For Setting Cookies Expiration
   let midnight = new Date();
   midnight.setHours(23, 59, 59, 0)
-
+  //Current Movie (obj)
   let currentMovie = dailyQuestion
   let correctAnswer = currentMovie?.movie;
   let minLengthAnswer = Math?.floor(correctAnswer?.length * .66)
 
+  //To store numGuesses in case of refresh
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses);
   }, [numGuesses])
-
-  // useEffect(() => {
-  //   localStorage.setItem('numGuesses', 3);
-  // }, [cookies])
-
-
-
-  // console.log(midnight === new Date(), 'midnight')
-
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -86,7 +73,6 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       setNumGuesses(3)
     }
     updateCount(currentMovie, currentMovie._id)
-
   };
 
   function handleChange(evt) {
@@ -95,9 +81,13 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   };
 
   return (
-    // <>{true ?
     <>{currentMovie?.activeDate === cookies.date ?
-      <ResultPage score={score} prompt={prompt} correctAnswer={correctAnswer} currentMovie={currentMovie} />
+      <ResultPage
+        score={score}
+        prompt={prompt}
+        correctAnswer={correctAnswer}
+        currentMovie={currentMovie}
+      />
       :
       <div className="game-box">
         <div>
@@ -106,11 +96,16 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
             <img className="image" src={currentMovie?.image} alt="" />
 
           </div>
-          <HintPage numGuesses={numGuesses} currentMovie={currentMovie} />
-          <SubmitForm handleSubmit={handleSubmit}
+          <HintPage
+            numGuesses={numGuesses}
+            currentMovie={currentMovie}
+          />
+          <SubmitForm
+            handleSubmit={handleSubmit}
             incomingGuess={incomingGuess}
             handleChange={handleChange}
-            minLengthAnswer={minLengthAnswer} />
+            minLengthAnswer={minLengthAnswer}
+          />
         </div>
       </div>
     }
