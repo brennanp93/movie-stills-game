@@ -52,6 +52,11 @@ img {
   border-radius: 15px;
 }
 
+.image {
+  max-width: 50%;
+  border-radius: 10px;
+}
+
 form{
 display: grid;
 grid-template-columns: 2fr 1fr;
@@ -83,6 +88,8 @@ button:disabled, form:invalid button[type="submit"] {
   background-color: rgb(244, 244, 244);
   color: rgb(184, 184, 184) ;
 }
+
+
 /* h1,
 form {
   text-align: center;

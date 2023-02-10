@@ -93,7 +93,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
         <div className="game-box-grids">
           <h2>Guesses Remaining:  {numGuesses}</h2>
           <div>
-            <img className="image" src={currentMovie?.image} alt="" />
+            <img src={currentMovie?.image} alt="" />
             {/* <img className="image" src='v' alt="" /> */}
 
           </div>
