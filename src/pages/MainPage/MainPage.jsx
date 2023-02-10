@@ -94,6 +94,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
           <h1>Guesses Remaining:  {numGuesses}</h1>
           <div>
             <img className="image" src={currentMovie?.image} alt="" />
+            {/* <img className="image" src='v' alt="" /> */}
 
           </div>
           <HintPage
