@@ -1,14 +1,21 @@
-export default function AboutPage({setAboutPage}) {
+export default function AboutPage({ setAboutPage }) {
 
-  
+
   return (
     <>
-      <div>
-        <h2>Greetings!</h2>
-        <h3>Looks like this is your first time playing! (Or you recently cleared your local storage!)</h3>
-        <h3>Take a look at the below information to help you get started playing this game.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam recusandae, quia praesentium itaque quasi aperiam. Est minus aperiam, harum doloremque consequatur vitae quis repellendus quaerat iusto officia ratione dolores quo?</p>
-        <button onClick={() => setAboutPage(true)}>Let's Play!</button>
+      <div className="about-page">
+        <div>
+          <h2>Greetings!</h2>
+          <h3>Read below to help you get started.</h3>
+          <ul>
+            <li>A single frame from a popular film is presented each day</li>
+            <li>Hints are provided after each wrong guess (3 hints total)</li>
+            <li>4 points are awarded for a correct guess</li>
+            <li>1 point subtracted for each incorrect guess</li>
+            <li>If the movie remains unidentified, no points are awarded.</li>
+          </ul>
+          <button className="play-button" onClick={() => setAboutPage(true)}>Let's Play!</button>
+        </div>
       </div>
 
     </>
