@@ -9,7 +9,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   const [incomingGuess, setIncomingGuess] = useState('')
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
-    return (parseInt(savedGuesses) ?? 3)
+    return (parseInt(savedGuesses) || 3)
   });
 
   //For Setting Cookies
@@ -26,6 +26,10 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses);
   }, [numGuesses])
+  useEffect(() => {
+    localStorage.setItem('score', score);
+  }, [score])
+
 
   function handleSubmit(evt) {
     evt.preventDefault();
