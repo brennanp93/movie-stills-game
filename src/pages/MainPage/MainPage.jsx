@@ -9,8 +9,13 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   const [incomingGuess, setIncomingGuess] = useState('')
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
-    return (parseInt(savedGuesses) || 3)
+    // if (cookies.date) {
+    //   return 3
+    // } else {
+      return (parseInt(savedGuesses) || 3)
+    // }
   });
+  console.log(cookies.date || 'cookies')
 
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
@@ -26,6 +31,11 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses);
   }, [numGuesses])
+  //To reset numGuesses if it is not solved before midnight
+  useEffect(() => {
+    localStorage.setItem('numGuesses', 3);
+  }, [dailyQuestion])
+  //To save the score
   useEffect(() => {
     localStorage.setItem('score', score);
   }, [score])
