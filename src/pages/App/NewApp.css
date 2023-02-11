@@ -11,12 +11,19 @@
 }
 
 .about-page {
-  grid-column: 2/span 1;
+  grid-column: 1/span 3;
   text-align: center;
   align-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   font-size: 2em;
   border-radius: 10px;
   height: 75%;
+  margin: 0 10% 0 10%;
+}
+
+.about-page>h2 {
+  margin: 0;
 }
 
 ul {
@@ -122,6 +129,9 @@ form:invalid button[type="submit"] {
   color: rgb(184, 184, 184);
 }
 
+a {
+  margin: 2%;
+}
 
 @media (max-width: 500px) {
   .App {
@@ -137,12 +147,14 @@ form:invalid button[type="submit"] {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 10%;
+    height: 20%;
+    margin-bottom: 10%;
   }
 
   footer {
     margin-top: auto;
     width: 100%;
+    padding: 3% 0;
   }
 
   .game-box {
@@ -151,13 +163,14 @@ form:invalid button[type="submit"] {
   }
 
   .about-page {
-    grid-column: 2/span 1;
+    grid-column: 1/span 3;
     text-align: center;
     align-items: center;
+    display: grid;
+    grid-template-rows: 10% 1fr .5fr;
     font-size: 1em;
-    /* border: solid  rgb(89, 89, 89) 3px; */
     border-radius: 10px;
-    padding: 2%;
     height: 75%;
+    margin: 0 5% 5% 5%;
   }
 }

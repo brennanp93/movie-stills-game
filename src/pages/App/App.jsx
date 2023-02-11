@@ -12,6 +12,7 @@ import * as movieListAPI from '../../utilities/movielist-api'
 import { useCookies } from 'react-cookie';
 import Footer from '../../components/Footer/Footer';
 import AboutPage from '../../components/AboutPage/AboutPage';
+import { type } from '@testing-library/user-event/dist/type';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -22,8 +23,11 @@ export default function App() {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
   });
-  const [aboutPage, setAboutPage] = useState(false)
-
+  const [aboutPage, setAboutPage] = useState(() => {
+    let aboutBoolean = localStorage.getItem('aboutPage');
+    return JSON.parse(aboutBoolean)
+  })
+// console.log(typeof(true))
   async function updateCount(booleanData, id) {
     await movieListAPI.updateCount(booleanData, id);
   }
@@ -31,6 +35,10 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('score', score)
   }, [score])
+
+  useEffect(() => {
+    localStorage.setItem('aboutPage', aboutPage)
+  }, [aboutPage])
 
   useEffect(function () {
     async function getDailyItems() {
@@ -46,7 +54,7 @@ export default function App() {
   return (
     <>
       <main className="App">
-        <NavBar user={user} setUser={setUser} score={score} setAboutPage={setAboutPage} />
+        <NavBar user={user} score={score} setAboutPage={setAboutPage} />
         {!aboutPage ?
           <AboutPage setAboutPage={setAboutPage} />
           :
