@@ -11,6 +11,7 @@ import * as answerKeyAPI from '../../utilities/answerkey-api'
 import * as movieListAPI from '../../utilities/movielist-api'
 import { useCookies } from 'react-cookie';
 import Footer from '../../components/Footer/Footer';
+import AboutPage from '../../components/AboutPage/AboutPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -21,6 +22,7 @@ export default function App() {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
   });
+  const [aboutPage, setAboutPage] = useState(false)
 
   async function updateCount(booleanData, id) {
     await movieListAPI.updateCount(booleanData, id);
@@ -40,18 +42,22 @@ export default function App() {
     getDailyItems();
   }, [score])
   //might need to fix this ^^ [score]
-  
+
   return (
     <>
       <main className="App">
-        <NavBar user={user} setUser={setUser} score={score} />
-        <MainPage score={score}
-          setScore={setScore}
-          dailyQuestion={dailyQuestion}
-          answerKey={answerKey}
-          updateCount={updateCount}
-          cookies={cookies}
-          setCookies={setCookies} />
+        <NavBar user={user} setUser={setUser} score={score} setAboutPage={setAboutPage} />
+        {!aboutPage ?
+          <AboutPage setAboutPage={setAboutPage} />
+          :
+          <MainPage score={score}
+            setScore={setScore}
+            dailyQuestion={dailyQuestion}
+            answerKey={answerKey}
+            updateCount={updateCount}
+            cookies={cookies}
+            setCookies={setCookies} />
+        }
         <Footer />
       </main>
     </>

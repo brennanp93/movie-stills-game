@@ -1,8 +1,8 @@
 // import { Link } from 'react-router-dom';
-export default function NavBar({ score }) {
+export default function NavBar({ score, setAboutPage }) {
   return (
     <header>
-      {/* <a href="">About</a> */}
+      <a href="#" onClick={() => setAboutPage(false)}>About</a>
       <h1 className='app-title'>Name That Movie!</h1>
       <div >
         <h3 className="game-score">Current Score: {score}</h3>
