@@ -28,7 +28,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   }, [numGuesses])
   //To reset numGuesses if it is not solved before midnight
   useEffect(() => {
-    localStorage.setItem('numGuesses', 3);
+    localStorage.setItem('numGuesses', 4);
   }, [dailyQuestion])
   //To save the score
   useEffect(() => {
@@ -53,33 +53,33 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     if (result === correctAnswer) {
       setPrompt('Nice job! You guessed correctly');
       setIncomingGuess('');
-      setNumGuesses(3)
+      setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
       currentMovie.count += 1;
-      if (numGuesses === 3) {
+      if (numGuesses === 4) {
         setScore(score + 4)
-      } else if (numGuesses === 2) {
+      } else if (numGuesses === 3) {
         setScore(score + 3)
-      } else if (numGuesses === 1) {
+      } else if (numGuesses === 2) {
         setScore(score + 2)
-      } else if (numGuesses === 0) {
+      } else if (numGuesses === 1) {
         setScore(score + 1)
       }
+    } else if (result !== correctAnswer && numGuesses === 4) {
+      setNumGuesses(numGuesses - 1);
+      setIncomingGuess('');
     } else if (result !== correctAnswer && numGuesses === 3) {
       setNumGuesses(numGuesses - 1);
       setIncomingGuess('');
     } else if (result !== correctAnswer && numGuesses === 2) {
       setNumGuesses(numGuesses - 1);
       setIncomingGuess('');
-    } else if (result !== correctAnswer && numGuesses === 1) {
-      setNumGuesses(numGuesses - 1);
-      setIncomingGuess('');
     }
-    if (result !== correctAnswer && numGuesses === 0) {
+    if (result !== correctAnswer && numGuesses === 1) {
       setPrompt("Aw Shucks. Better luck tomorrow!");
       setCookies('date', todayDate, { expires: midnight });
       currentMovie.count = currentMovie.count + 1;
-      setNumGuesses(3)
+      setNumGuesses(4)
     }
     updateCount(currentMovie, currentMovie._id)
   };
