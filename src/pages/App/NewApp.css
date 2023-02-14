@@ -97,12 +97,14 @@ form {
   justify-content: center;
   margin-top: 1%;
   padding: 0 10% 0 10%;
+  font-size: 18px;
 }
 
 input {
   border: solid rgb(89, 89, 89) 1px;
   border-radius: 5px;
-  font-family: 'Abril Fatface', cursive;
+  font-size: 17px;
+  font-family: 'Play', sans-serif;
 }
 
 .play-button {
