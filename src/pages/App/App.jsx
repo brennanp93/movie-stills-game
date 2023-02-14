@@ -43,7 +43,7 @@ export default function App() {
       setDailyQuestion(todayItem[0])
     };
     getDailyItems();
-  }, [])
+  }, [score])
   //might need to fix this ^^ [score]
 
   return (

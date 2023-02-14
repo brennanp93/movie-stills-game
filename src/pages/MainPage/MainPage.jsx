@@ -9,7 +9,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   const [incomingGuess, setIncomingGuess] = useState('')
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
-      return (parseInt(savedGuesses) || 3)
+    return (parseInt(savedGuesses) || 3)
   });
 
   //For Setting Cookies
@@ -51,7 +51,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     } else { result = 'caterpillar' }
     /*---^ fuzzy search ^---*/
     if (result === correctAnswer) {
-      setPrompt('Nice job! You guessed correctly');
+      setPrompt('Nice!');
       setIncomingGuess('');
       setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
@@ -63,7 +63,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       } else if (numGuesses === 2) {
         setScore(score + 2)
       } else if (numGuesses === 1) {
-        setScore(score + 1)
+        setScore(score + 1);
       }
     } else if (result !== correctAnswer && numGuesses === 4) {
       setNumGuesses(numGuesses - 1);
@@ -76,7 +76,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       setIncomingGuess('');
     }
     if (result !== correctAnswer && numGuesses === 1) {
-      setPrompt("Aw Shucks. Better luck tomorrow!");
+      setPrompt("Better luck tomorrow!");
       setCookies('date', todayDate, { expires: midnight });
       currentMovie.count = currentMovie.count + 1;
       setNumGuesses(4)
@@ -88,7 +88,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     const newGuess = evt.target.value
     setIncomingGuess(newGuess)
   };
-
+  console.log(prompt, 'prompt')
   return (
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage
@@ -100,11 +100,13 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       :
       <div className="game-box">
         <div className="game-box-grids">
-          <h2>Guesses Remaining:  {numGuesses}</h2>
+          {numGuesses === 1 ?
+            <h2>Final Guess!</h2>
+            :
+            <h2>Guesses Remaining: {numGuesses}</h2>
+          }
           <div>
             <img src={currentMovie?.image} alt="" />
-            {/* <img className="image" src='v' alt="" /> */}
-
           </div>
           <SubmitForm
             handleSubmit={handleSubmit}
