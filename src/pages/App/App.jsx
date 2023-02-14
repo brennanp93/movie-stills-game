@@ -21,19 +21,15 @@ export default function App() {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
   });
-  console.log(typeof(score))
+
   const [aboutPage, setAboutPage] = useState(() => {
     let aboutBoolean = localStorage.getItem('aboutPage');
     return JSON.parse(aboutBoolean)
   })
-// console.log(typeof(true))
+
   async function updateCount(booleanData, id) {
     await movieListAPI.updateCount(booleanData, id);
   }
-
-  // useEffect(() => {
-  //   localStorage.setItem('score', score)
-  // }, [score])
 
   useEffect(() => {
     localStorage.setItem('aboutPage', aboutPage)
@@ -47,7 +43,7 @@ export default function App() {
       setDailyQuestion(todayItem[0])
     };
     getDailyItems();
-  }, [score])
+  }, [])
   //might need to fix this ^^ [score]
 
   return (

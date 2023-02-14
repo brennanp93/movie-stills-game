@@ -9,13 +9,8 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
   const [incomingGuess, setIncomingGuess] = useState('')
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
-    // if (cookies.date) {
-    //   return 3
-    // } else {
       return (parseInt(savedGuesses) || 3)
-    // }
   });
-  console.log(cookies.date || 'cookies')
 
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
