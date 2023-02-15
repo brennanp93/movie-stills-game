@@ -4,14 +4,14 @@ import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
 
-export default function MainPage({ score, setScore, dailyQuestion, answerKey, cookies, setCookies, updateCount }) {
+export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore,  }) {
   const [prompt, setPrompt] = useState('');
   const [incomingGuess, setIncomingGuess] = useState('')
+
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
     return (parseInt(savedGuesses) || 3)
   });
-
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
   //For Setting Cookies Expiration
@@ -55,7 +55,7 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
       setIncomingGuess('');
       setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
-      currentMovie.count += 1;
+      playCount.count += 1;
       if (numGuesses === 4) {
         setScore(score + 4)
       } else if (numGuesses === 3) {
@@ -78,17 +78,17 @@ export default function MainPage({ score, setScore, dailyQuestion, answerKey, co
     if (result !== correctAnswer && numGuesses === 1) {
       setPrompt("Better luck tomorrow!");
       setCookies('date', todayDate, { expires: midnight });
-      currentMovie.count = currentMovie.count + 1;
+      playCount.count += 1;
       setNumGuesses(4)
+
     }
-    updateCount(currentMovie, currentMovie._id)
+    updateCount(playCount, playCount._id)
   };
 
   function handleChange(evt) {
     const newGuess = evt.target.value
     setIncomingGuess(newGuess)
   };
-  console.log(prompt, 'prompt')
   return (
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage

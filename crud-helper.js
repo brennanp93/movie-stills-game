@@ -6,10 +6,11 @@ require('./config/database');
 const User = require('./models/user');
 const MovieList = require('./models/movielist');
 const AnswerKey = require('./models/answerkey');
+const PlayCount = require('./models/playcount');
 
 
 // Local variables will come in handy for holding retrieved documents
-let movieList, answerKey
+let movieList, answerKey, playCount
 
 
 

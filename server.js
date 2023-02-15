@@ -27,6 +27,7 @@ const port = process.env.PORT || 3001;
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/movielist', require('./routes/api/movielist'));
 app.use('/api/answerkey', require('./routes/api/answerkey'));
+app.use('/api/playcount', require('./routes/api/playcount'));
 
 
 // The following "catch all" route (note the *) is necessary

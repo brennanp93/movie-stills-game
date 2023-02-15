@@ -9,6 +9,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import MainPage from '../MainPage/MainPage';
 import * as answerKeyAPI from '../../utilities/answerkey-api'
 import * as movieListAPI from '../../utilities/movielist-api'
+import * as playcountAPI from '../../utilities/playcount-api'
 import { useCookies } from 'react-cookie';
 import Footer from '../../components/Footer/Footer';
 import AboutPage from '../../components/AboutPage/AboutPage';
@@ -16,19 +17,19 @@ import AboutPage from '../../components/AboutPage/AboutPage';
 export default function App() {
   const [answerKey, setAnswerKey] = useState();
   const [dailyQuestion, setDailyQuestion] = useState();
+  const [playCount, setPlayCount] = useState(0)
   const [cookies, setCookies] = useCookies(['date'])
   const [score, setScore] = useState(() => {
     let savedScore = localStorage.getItem('score')
     return parseInt(savedScore) || 0;
   });
-
   const [aboutPage, setAboutPage] = useState(() => {
     let aboutBoolean = localStorage.getItem('aboutPage');
     return JSON.parse(aboutBoolean)
   })
 
-  async function updateCount(booleanData, id) {
-    await movieListAPI.updateCount(booleanData, id);
+  async function updateCount(playCountData, id) {
+    await playcountAPI.updateCount(playCountData, id)
   }
 
   useEffect(() => {
@@ -39,8 +40,10 @@ export default function App() {
     async function getDailyItems() {
       const entireAnswerKey = await answerKeyAPI.getAll();
       const todayItem = await movieListAPI.getAll()
+      const currentPlayCountObject = await playcountAPI.getAll()
       setAnswerKey(entireAnswerKey[0].answers)
       setDailyQuestion(todayItem[0])
+      setPlayCount(currentPlayCountObject[0])
     };
     getDailyItems();
   }, [score])
@@ -53,10 +56,12 @@ export default function App() {
         {!aboutPage ?
           <AboutPage setAboutPage={setAboutPage} />
           :
-          <MainPage score={score}
-            setScore={setScore}
+          <MainPage
+            playCount={playCount}
             dailyQuestion={dailyQuestion}
             answerKey={answerKey}
+            score={score}
+            setScore={setScore}
             updateCount={updateCount}
             cookies={cookies}
             setCookies={setCookies} />

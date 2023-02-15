@@ -3,6 +3,7 @@ require('./config/database');
 
 const MovieList = require('./models/movielist');
 const AnswerKey = require('./models/answerkey');
+const PlayCount = require('./models/playcount');
 
 (async function () {
   await MovieList.deleteMany({});
@@ -125,9 +126,11 @@ const AnswerKey = require('./models/answerkey');
       hints: ["Released: 1994", "Featuring: John Travolta", "Directed By: Quentin Tarantino"],
       completed: false,
       activeDate: '2/14/2023',
-      count: 0,
+      count: 15,
     },
   ]);
+
+
   await AnswerKey.deleteMany({});
   const answerKey = await AnswerKey.create([{
     answers: [
