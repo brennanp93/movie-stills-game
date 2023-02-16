@@ -103,7 +103,9 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
           {numGuesses === 1 ?
             <h2>Final Guess!</h2>
             :
-            <h2>Guesses Remaining: {numGuesses}</h2>
+            <h2>Guesses Remaining: {numGuesses} 
+            {/* &nbsp;{playCount.count} */}
+            </h2>
           }
           <div>
             <img src={currentMovie?.image} alt="" />

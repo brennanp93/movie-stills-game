@@ -128,6 +128,47 @@ const PlayCount = require('./models/playcount');
       activeDate: '2/14/2023',
       count: 15,
     },
+    {
+      image: 'https://i.ibb.co/9GyBwRW/296.webp',
+      movie: 'Edward Scissorhands',
+      hints: ['Released in 1990', 'Directed by: Tim Burton', 'Featuring: Winona Ryder'],
+      completed: false,
+      activeDate: '2/15/2023',
+      count: 0,
+    },
+    {
+      image: 'https://i.ibb.co/WnDJZ50/2319.webp',
+      movie: 'The Sound of Music',
+      hints: ['Released in 1965', 'Genre: Musical', 'Starring: Julie Andrews'],
+      completed: false,
+      activeDate: '2/16/2023',
+      count: 0,
+    },
+    {
+      image: 'https://i.ibb.co/HPDS8H7/2890.webp',
+      movie: 'Jurrasic Park',
+      hints: ['Released in 1993', 'Based on a novel by Michael Chrichton', 'Featuring: Jeff Goldblum', ],
+      completed: false,
+      activeDate: '2/17/2023',
+      count: 0,
+    },
+    {
+      image: 'https://i.ibb.co/8b3s0Mm/65.webp',
+      movie: 'Little Women',
+      hints: ['Released in 1994', 'Featuring Susan Sarandon', 'Also Featuring Winona Ryder'],
+      completed: false,
+      activeDate: '2/18/2023',
+      count: 0,
+    },
+    {
+      image: 'https://i.ibb.co/8mVvLmR/9358.webp',
+      movie: 'Back to the Future',
+      hints: ['Released in 1985', 'Featuring Lea Thompson', 'DeLorean'],
+      completed: false,
+      activeDate: '2/19/2023',
+      count: 0,
+    },
+    
   ]);
 
 
@@ -156,7 +197,11 @@ const PlayCount = require('./models/playcount');
       { answer: 'The Northman' },
       { answer: 'The Darjeeling Limited' },
       { answer: 'Midsommar' },
-      { answer: 'Parasite' },
+      { answer: 'Back to the Future' },
+      { answer: 'Little Women' },
+      { answer: 'The Sound of Music' },
+      { answer: 'Edward Scissorhands' },
+      { answer: 'Jurrasic Park' },
     ],
   }]);
   console.log(movieList);
