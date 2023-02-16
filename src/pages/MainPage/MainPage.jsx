@@ -4,7 +4,7 @@ import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
 
-export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore,  }) {
+export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, }) {
   const [prompt, setPrompt] = useState('');
   const [incomingGuess, setIncomingGuess] = useState('')
 
@@ -103,9 +103,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
           {numGuesses === 1 ?
             <h2>Final Guess!</h2>
             :
-            <h2>Guesses Remaining: {numGuesses} 
-            {/* &nbsp;{playCount.count} */}
-            </h2>
+            <h2>Guesses Remaining:&nbsp;{numGuesses}</h2>
           }
           <div>
             <img src={currentMovie?.image} alt="" />

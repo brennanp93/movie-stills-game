@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
-// import { Routes, Route } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
-// import './App.css';
-import './NewApp.css';
-
-
-import NavBar from '../../components/NavBar/NavBar';
-import MainPage from '../MainPage/MainPage';
 import * as answerKeyAPI from '../../utilities/answerkey-api'
 import * as movieListAPI from '../../utilities/movielist-api'
 import * as playcountAPI from '../../utilities/playcount-api'
-import { useCookies } from 'react-cookie';
+
+import NavBar from '../../components/NavBar/NavBar';
+import MainPage from '../MainPage/MainPage';
 import Footer from '../../components/Footer/Footer';
 import AboutPage from '../../components/AboutPage/AboutPage';
+
+import './App.css';
 
 export default function App() {
   const [answerKey, setAnswerKey] = useState();
