@@ -3,6 +3,7 @@ import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
+import { TwitterIcon, TwitterShareButton } from "react-share";
 
 export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, }) {
   const [prompt, setPrompt] = useState('');
@@ -118,6 +119,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
             numGuesses={numGuesses}
             currentMovie={currentMovie}
           />
+        
         </div>
       </div>
     }

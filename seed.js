@@ -168,6 +168,14 @@ const PlayCount = require('./models/playcount');
       activeDate: '2/19/2023',
       count: 0,
     },
+    {
+      image: 'https://i.ibb.co/L0Cyv60/4801.webp',
+      movie: 'Chinatown',
+      hints: ['Released in 1974', 'Featuring Faye Dunaway', 'Starring Jack Nicholson'],
+      completed: false,
+      activeDate: '2/20/2023',
+      count: 0,
+    },
     
   ]);
 
@@ -197,6 +205,7 @@ const PlayCount = require('./models/playcount');
       { answer: 'The Northman' },
       { answer: 'The Darjeeling Limited' },
       { answer: 'Midsommar' },
+      { answer: 'Chinatown' },
       { answer: 'Back to the Future' },
       { answer: 'Little Women' },
       { answer: 'The Sound of Music' },
