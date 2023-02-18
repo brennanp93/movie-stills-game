@@ -7,11 +7,11 @@ import Fuse from "fuse.js";
 export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, }) {
   const [prompt, setPrompt] = useState('');
   const [incomingGuess, setIncomingGuess] = useState('')
-
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
     return (parseInt(savedGuesses) || 3)
   });
+  let twinnerNumGuesses = 4
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
   //For Setting Cookies Expiration
@@ -56,6 +56,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
       setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
       setScore(score + numGuesses)
+      playCount.count += 1;
     } else if (result !== correctAnswer && numGuesses === 4) {
       setNumGuesses(numGuesses - 1);
       setIncomingGuess('');
@@ -75,11 +76,11 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
     }
     updateCount(playCount, playCount._id)
   };
-
   function handleChange(evt) {
     const newGuess = evt.target.value
     setIncomingGuess(newGuess)
   };
+
   return (
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage
@@ -88,6 +89,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
         correctAnswer={correctAnswer}
         currentMovie={currentMovie}
         numGuesses={numGuesses}
+        twinnerNumGuesses={twinnerNumGuesses}
       />
       :
       <div className="game-box">

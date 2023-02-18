@@ -1,17 +1,19 @@
-import { TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from "react-share"
-export default function ResultPage({ prompt, score, correctAnswer, currentMovie, numGuesses }) {
-  let twitterEmoji = ''
-  if (numGuesses === 4) {
-    twitterEmoji = 'Got it in the first try! 🎦🎦🎦🎦'
-  } else if (numGuesses === 3) {
-    twitterEmoji = '🎦🎦🎦'
-  } else if (numGuesses === 2) {
-    twitterEmoji = '🎦🎦'
-  } else if (numGuesses ===1) {
-    twitterEmoji = '🎦'
-  } else {
-    twitterEmoji = ''
-  }
+import { TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon } from "react-share"
+export default function ResultPage({ prompt, score, correctAnswer, currentMovie }) {
+  let scorePhrase = [
+    `Boom! My current score is ${score}!`,
+    `Yeah, baby! I'm at ${score} points!`,
+    `Woo-hoo! Look at my score: ${score}!`,
+    `Oh, snap! I just hit ${score} points!`,
+    `Scoreboard, baby! I'm at ${score}!`,
+    `In your face! I'm currently at ${score} points!`,
+    `Can't stop me now! I'm at ${score} points!`,
+    `Bam! ${score} points and counting!`,
+    `It's getting real, folks! I'm at ${score} points!`,
+    `Let's gooooo! My score just hit ${score}!`
+  ];
+  let randomIdx = Math.floor(Math.random() * scorePhrase.length)
+  let currentTweet = scorePhrase[randomIdx]
   return (
     <>
       <div className='game-box '>
@@ -28,15 +30,17 @@ export default function ResultPage({ prompt, score, correctAnswer, currentMovie,
             Share Your Score!
           </div>
           <TwitterShareButton
-            // title={`I'm up to ${score} points! What's your score?`}
-            // title='🎦'
-            title={`Current Score ${score}!
-            ${twitterEmoji}`}
             url={"https://name-that-movie.herokuapp.com/"}
+            title={`${currentTweet}`}
             hashtags={["namethatmovie"]}
           >
             <TwitterIcon size={32} round />
           </TwitterShareButton>
+          <WhatsappShareButton
+            title={score}
+            separator={'string'}>
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
         </div>
       </div>
     </>
