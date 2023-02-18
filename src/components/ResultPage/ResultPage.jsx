@@ -1,4 +1,4 @@
-import { TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon } from "react-share"
+import { TwitterShareButton, TwitterIcon } from "react-share"
 export default function ResultPage({ prompt, score, correctAnswer, currentMovie }) {
   let scorePhrase = [
     `Boom! My current score is ${score}!`,
@@ -36,11 +36,6 @@ export default function ResultPage({ prompt, score, correctAnswer, currentMovie 
           >
             <TwitterIcon size={32} round />
           </TwitterShareButton>
-          <WhatsappShareButton
-            title={score}
-            separator={'string'}>
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
         </div>
       </div>
     </>
