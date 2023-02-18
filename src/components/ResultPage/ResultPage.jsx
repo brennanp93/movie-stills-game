@@ -12,15 +12,14 @@ export default function ResultPage({ prompt, score, correctAnswer, currentMovie 
           <div>
             <p>Current Score: {score}</p>
           </div>
-         
-
           <TwitterShareButton
             title={`I'm up to ${score} points! What's your score?`}
             url={"https://name-that-movie.herokuapp.com/"}
-          > 
-          <div className="twitter">
-            Share Your Score!
-          </div>
+            hashtags={["namethatmovie"]}
+          >
+            <div className="twitter">
+              Share Your Score!
+            </div>
             <TwitterIcon size={32} round />
           </TwitterShareButton>
         </div>
