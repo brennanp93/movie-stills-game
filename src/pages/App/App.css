@@ -103,7 +103,9 @@ input {
   font-size: 17px;
   font-family: 'Play', sans-serif;
 }
-
+.twitter {
+margin-bottom: 1%;
+}
 .play-button {
   margin-top: 2%;
   width: auto;
