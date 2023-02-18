@@ -1,5 +1,17 @@
-import { TwitterShareButton, TwitterIcon } from "react-share"
-export default function ResultPage({ prompt, score, correctAnswer, currentMovie }) {
+import { TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from "react-share"
+export default function ResultPage({ prompt, score, correctAnswer, currentMovie, numGuesses }) {
+  let twitterEmoji = ''
+  if (numGuesses === 4) {
+    twitterEmoji = 'Got it in the first try! 🎦🎦🎦🎦'
+  } else if (numGuesses === 3) {
+    twitterEmoji = '🎦🎦🎦'
+  } else if (numGuesses === 2) {
+    twitterEmoji = '🎦🎦'
+  } else if (numGuesses ===1) {
+    twitterEmoji = '🎦'
+  } else {
+    twitterEmoji = ''
+  }
   return (
     <>
       <div className='game-box '>
@@ -12,14 +24,17 @@ export default function ResultPage({ prompt, score, correctAnswer, currentMovie 
           <div>
             <p>Current Score: {score}</p>
           </div>
+          <div className="twitter">
+            Share Your Score!
+          </div>
           <TwitterShareButton
-            title={`I'm up to ${score} points! What's your score?`}
+            // title={`I'm up to ${score} points! What's your score?`}
+            // title='🎦'
+            title={`Current Score ${score}!
+            ${twitterEmoji}`}
             url={"https://name-that-movie.herokuapp.com/"}
             hashtags={["namethatmovie"]}
           >
-            <div className="twitter">
-              Share Your Score!
-            </div>
             <TwitterIcon size={32} round />
           </TwitterShareButton>
         </div>

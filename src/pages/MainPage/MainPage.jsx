@@ -55,16 +55,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
       setIncomingGuess('');
       setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
-      playCount.count += 1;
-      if (numGuesses === 4) {
-        setScore(score + 4)
-      } else if (numGuesses === 3) {
-        setScore(score + 3)
-      } else if (numGuesses === 2) {
-        setScore(score + 2)
-      } else if (numGuesses === 1) {
-        setScore(score + 1);
-      }
+      setScore(score + numGuesses)
     } else if (result !== correctAnswer && numGuesses === 4) {
       setNumGuesses(numGuesses - 1);
       setIncomingGuess('');
@@ -96,6 +87,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
         prompt={prompt}
         correctAnswer={correctAnswer}
         currentMovie={currentMovie}
+        numGuesses={numGuesses}
       />
       :
       <div className="game-box">
@@ -118,7 +110,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
             numGuesses={numGuesses}
             currentMovie={currentMovie}
           />
-        
+
         </div>
       </div>
     }
