@@ -3,6 +3,7 @@ import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
+import { movieList, movieArray } from "../../newdata";
 
 export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, }) {
   const [prompt, setPrompt] = useState('');
@@ -21,7 +22,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
   let currentMovie = dailyQuestion
   let correctAnswer = currentMovie?.movie;
   let minLengthAnswer = Math?.floor(correctAnswer?.length * .66)
-
+  console.log(movieList.length)
   //To store numGuesses in case of refresh
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses);

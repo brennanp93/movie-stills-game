@@ -5,9 +5,7 @@ const movieListSchema = new Schema({
   image: String,
   movie: String, 
   hints: [String],
-  completed: Boolean,
   activeDate: String,
-  count: Number
 }, {
   timestamps: true
 });

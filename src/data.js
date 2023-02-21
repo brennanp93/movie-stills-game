@@ -68,7 +68,9 @@ export const answerKey = [
   // { answer: 'The Godfather' },
 ]
 
-let movieList = [
+
+
+export let movieAray = [
   "The Shawshank Redemption (1994)",
   "The Godfather (1972)",
   "The Godfather: Part II (1974)",
