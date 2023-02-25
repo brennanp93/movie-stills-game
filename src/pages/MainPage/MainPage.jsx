@@ -22,24 +22,23 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
   let currentMovie = dailyQuestion
   let correctAnswer = currentMovie?.movie;
   let minLengthAnswer = Math?.floor(correctAnswer?.length * .66);
-  
+
   //To store numGuesses in case of refresh
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses)
   }, [numGuesses])
-  // console.log(midnight <= new Date())
+
   //To reset numGuesses if it is not solved before midnight
-  useEffect(() => {
-    if (midnight <= new Date()) {
-      localStorage.setItem('numGuesses', 4);
-    }
-  }, [numGuesses])
+  // useEffect(() => {
+  //   if (midnight <= new Date()) {
+  //     localStorage.setItem('numGuesses', 4);
+  //   }
+  // }, [numGuesses])
   //To save the score and if the user won or lost the round
   useEffect(() => {
     localStorage.setItem('score', score);
     localStorage.setItem('winner', winner)
   }, [winner, score])
-
   function handleSubmit(evt) {
     evt.preventDefault();
     /*---fuzzy search---*/

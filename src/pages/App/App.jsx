@@ -27,13 +27,12 @@ export default function App() {
   })
   const [winner, setWinner] = useState(() => {
     let winnerStatus = localStorage.getItem('winner')
-    return(JSON.parse(winnerStatus)|| false)
+    return (JSON.parse(winnerStatus) || false)
   })
 
   async function updateCount(playCountData, id) {
     await playcountAPI.updateCount(playCountData, id)
   }
-
   useEffect(() => {
     localStorage.setItem('aboutPage', aboutPage)
   }, [aboutPage])
@@ -48,8 +47,22 @@ export default function App() {
       setPlayCount(currentPlayCountObject[0])
     };
     getDailyItems();
-  }, [winner])
-  //might need to fix this ^^ [score]
+  }, [])
+
+  // refreshes page at midnight to ensure next day's movie is rendered
+  function refreshAt(hours, minutes, seconds) {
+    const now = new Date();
+    const then = new Date();
+    if (now.getHours() > hours ||
+      (now.getHours() === hours && now.getMinutes() > minutes) ||
+      (now.getHours() === hours && now.getMinutes() === minutes && now.getSeconds() >= seconds)) {
+      then.setDate(now.getDate() + 1);
+    }
+    then.setHours(hours, minutes, seconds);
+    const timeout = then.getTime() - now.getTime();
+    setTimeout(() => window.location.reload(true), timeout);
+  }
+  refreshAt(23, 59, 59)
 
   return (
     <>
@@ -69,7 +82,7 @@ export default function App() {
             setCookies={setCookies}
             winner={winner}
             setWinner={setWinner}
-             />
+          />
         }
         <Footer />
       </main>

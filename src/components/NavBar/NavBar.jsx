@@ -1,5 +1,6 @@
 
 export default function NavBar({ score, setAboutPage }) {
+
   return (
     <header>
       <button className="link-button" onClick={() => setAboutPage(false)}>How Do I Play?</button>
