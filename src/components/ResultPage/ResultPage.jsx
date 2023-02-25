@@ -10,7 +10,17 @@ export default function ResultPage({ winner, score, correctAnswer, currentMovie 
     `Can't stop me now! I'm at ${score} points!`,
     `Bam! ${score} points and counting!`,
     `It's getting real, folks! I'm at ${score} points!`,
-    `Let's gooooo! My score just hit ${score}!`
+    `Let's gooooo! My score just hit ${score}!`,
+    `Who's the boss? Me! With a score of ${score}!`,
+    `Hitting those targets like a pro! Score: ${score}!`,
+    `Don't be jelly, but I'm at ${score} points!`,
+    `I'm on fire! ${score} points and rising!`,
+    `Another one bites the dust! Score: ${score}!`,
+    `Just call me the scoring machine! ${score} points!`,
+    `I'm not just good, I'm great! Score: ${score}!`,
+    `Nothing can stop me now! ${score} points and counting!`,
+    `Feeling like a champion! Score: ${score}!`,
+    `Step aside, everyone! ${score} points and still going strong!`
   ];
   let randomIdx = Math.floor(Math.random() * scorePhrase.length)
   let currentTweet = scorePhrase[randomIdx]
@@ -27,9 +37,6 @@ export default function ResultPage({ winner, score, correctAnswer, currentMovie 
           <h2><strong></strong></h2>
           <img className="image" src={currentMovie?.image} alt="" />
           <h1>Come back tomorrow to play again!</h1>
-          {/* <div>
-            <p>Current Score: {score}</p>
-          </div> */}
           <div className="twitter">
             Share Your Score!
           </div>
