@@ -3,20 +3,16 @@ import SubmitForm from "../../components/SubmitForm/SubmitForm"
 import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
-import { movieList, movieArray } from "../../newdata";
+// import { movieList, movieArray } from "../../newdata";
 
-export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, }) {
-  const [prompt, setPrompt] = useState('');
-  const [winner, setWinner] = useState(() => {
-    let winnerStatus = localStorage.getItem('winner')
-    return(JSON.parse(winnerStatus))
-  })
+export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, winner, setWinner}) {
+
   const [incomingGuess, setIncomingGuess] = useState('')
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
-    return (parseInt(savedGuesses) || 3)
+    return (parseInt(savedGuesses) || 4)
   });
-  let winnerNumGuesses = 4
+  // let winnerNumGuesses = 4
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
   //For Setting Cookies Expiration
@@ -28,18 +24,20 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
   let minLengthAnswer = Math?.floor(correctAnswer?.length * .66)
   //To store numGuesses in case of refresh
   useEffect(() => {
-    localStorage.setItem('numGuesses', numGuesses);
+    localStorage.setItem('numGuesses', numGuesses)
   }, [numGuesses])
+  // console.log(midnight <= new Date())
   //To reset numGuesses if it is not solved before midnight
   useEffect(() => {
-    localStorage.setItem('numGuesses', 4);
-  }, [dailyQuestion])
-  //To save the score
+    if (midnight <= new Date()) {
+      localStorage.setItem('numGuesses', 4);
+    }
+  }, [numGuesses])
+  //To save the score and if the user won or lost the round
   useEffect(() => {
     localStorage.setItem('score', score);
     localStorage.setItem('winner', winner)
-  }, [score])
-
+  }, [winner, score])
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -56,7 +54,6 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
     } else { result = 'caterpillar' }
     /*---^ fuzzy search ^---*/
     if (result === correctAnswer) {
-      setPrompt('Nice!');
       setIncomingGuess('');
       setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
@@ -94,7 +91,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
         correctAnswer={correctAnswer}
         currentMovie={currentMovie}
         numGuesses={numGuesses}
-        winnerNumGuesses={winnerNumGuesses}
+        // winnerNumGuesses={winnerNumGuesses}
         winner={winner}
       />
       :

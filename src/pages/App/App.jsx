@@ -25,6 +25,10 @@ export default function App() {
     let aboutBoolean = localStorage.getItem('aboutPage');
     return JSON.parse(aboutBoolean)
   })
+  const [winner, setWinner] = useState(() => {
+    let winnerStatus = localStorage.getItem('winner')
+    return(JSON.parse(winnerStatus)|| false)
+  })
 
   async function updateCount(playCountData, id) {
     await playcountAPI.updateCount(playCountData, id)
@@ -44,7 +48,7 @@ export default function App() {
       setPlayCount(currentPlayCountObject[0])
     };
     getDailyItems();
-  }, [score])
+  }, [winner])
   //might need to fix this ^^ [score]
 
   return (
@@ -62,7 +66,10 @@ export default function App() {
             setScore={setScore}
             updateCount={updateCount}
             cookies={cookies}
-            setCookies={setCookies} />
+            setCookies={setCookies}
+            winner={winner}
+            setWinner={setWinner}
+             />
         }
         <Footer />
       </main>
