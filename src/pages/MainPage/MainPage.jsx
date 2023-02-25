@@ -7,12 +7,16 @@ import { movieList, movieArray } from "../../newdata";
 
 export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, }) {
   const [prompt, setPrompt] = useState('');
+  const [winner, setWinner] = useState(() => {
+    let winnerStatus = localStorage.getItem('winner')
+    return(JSON.parse(winnerStatus))
+  })
   const [incomingGuess, setIncomingGuess] = useState('')
   const [numGuesses, setNumGuesses] = useState(() => {
     let savedGuesses = localStorage.getItem('numGuesses');
     return (parseInt(savedGuesses) || 3)
   });
-  let twinnerNumGuesses = 4
+  let winnerNumGuesses = 4
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
   //For Setting Cookies Expiration
@@ -22,7 +26,6 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
   let currentMovie = dailyQuestion
   let correctAnswer = currentMovie?.movie;
   let minLengthAnswer = Math?.floor(correctAnswer?.length * .66)
-  console.log(movieList.length)
   //To store numGuesses in case of refresh
   useEffect(() => {
     localStorage.setItem('numGuesses', numGuesses);
@@ -34,6 +37,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
   //To save the score
   useEffect(() => {
     localStorage.setItem('score', score);
+    localStorage.setItem('winner', winner)
   }, [score])
 
 
@@ -57,6 +61,7 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
       setNumGuesses(4)
       setCookies('date', todayDate, { expires: midnight });
       setScore(score + numGuesses)
+      setWinner(true);
       playCount.count += 1;
     } else if (result !== correctAnswer && numGuesses === 4) {
       setNumGuesses(numGuesses - 1);
@@ -69,10 +74,10 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
       setIncomingGuess('');
     }
     if (result !== correctAnswer && numGuesses === 1) {
-      setPrompt("Better luck tomorrow!");
       setCookies('date', todayDate, { expires: midnight });
       playCount.count += 1;
       setNumGuesses(4)
+      setWinner(false)
 
     }
     updateCount(playCount, playCount._id)
@@ -86,11 +91,11 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
     <>{currentMovie?.activeDate === cookies.date ?
       <ResultPage
         score={score}
-        prompt={prompt}
         correctAnswer={correctAnswer}
         currentMovie={currentMovie}
         numGuesses={numGuesses}
-        twinnerNumGuesses={twinnerNumGuesses}
+        winnerNumGuesses={winnerNumGuesses}
+        winner={winner}
       />
       :
       <div className="game-box">
@@ -98,7 +103,8 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
           {numGuesses === 1 ?
             <h2>Final Guess!</h2>
             :
-            <h2>Guesses Remaining:&nbsp;{numGuesses}</h2>
+            // <h2>Guesses Remaining:&nbsp;{numGuesses}</h2>
+            <h2>You have {numGuesses} guesses remaining!</h2>
           }
           <div>
             <img src={currentMovie?.image} alt="" />

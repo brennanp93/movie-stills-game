@@ -67,7 +67,7 @@ const PlayCount = require('./models/playcount');
     {
       image: 'https://i.imgur.com/Ojpt6uJ.jpg',
       movie: 'Dunkirk',
-      hints: ['Realeased in 2017','City in France', 'Directed by Christopher Nolan'],
+      hints: ['Realeased in 2017', 'City in France', 'Directed by Christopher Nolan'],
       completed: false,
       activeDate: '2/7/2023',
       count: 0,
@@ -147,7 +147,7 @@ const PlayCount = require('./models/playcount');
     {
       image: 'https://i.ibb.co/HPDS8H7/2890.webp',
       movie: 'Jurrasic Park',
-      hints: ['Released in 1993', 'Based on a novel by Michael Chrichton', 'Featuring: Jeff Goldblum', ],
+      hints: ['Released in 1993', 'Based on a novel by Michael Chrichton', 'Featuring: Jeff Goldblum',],
       completed: false,
       activeDate: '2/17/2023',
       count: 0,
@@ -183,10 +183,10 @@ const PlayCount = require('./models/playcount');
       activeDate: "2/21/2023"
     },
     {
-      movie: "The Godfather",
-      image: "https://i.ibb.co/9y4LsLx/6723.webp",
-      hints: ['Released: 1972', 'Based on a Novel by Mario Puzo', 'Directed by Francis Ford Coppola'],
-      activeDate: "3/22/2023"
+      movie: "The Departed",
+      image: "https://i.ibb.co/jMY5q0x/32-1053.jpg",
+      hints: ["Released 2006", "Directed By Martin Scorcsese", "Featuring Leonardo DiCaprio"],
+      activeDate: "2/22/2023",
     },
     {
       movie: "The Godfather: Part II",
@@ -351,10 +351,10 @@ const PlayCount = require('./models/playcount');
       activeDate: "3/21/2023"
     },
     {
-      movie: "The Departed",
-      image: "",
-      hints: ["", "", ""],
-      activeDate: "2/22/2023",
+      movie: "The Godfather",
+      image: "https://i.ibb.co/9y4LsLx/6723.webp",
+      hints: ['Released: 1972', 'Based on a Novel by Mario Puzo', 'Directed by Francis Ford Coppola'],
+      activeDate: "3/22/2023"
     },
     {
       movie: "Gladiator",
@@ -530,7 +530,8 @@ const PlayCount = require('./models/playcount');
       hints: ["", "", ""],
       activeDate: "4/20/2023"
     },
-    
+
+
   ]);
 
 
@@ -569,6 +570,7 @@ const PlayCount = require('./models/playcount');
       { answer: "One Flew Over the Cuckoo's Nest" },
       { answer: "Goodfellas" },
       { answer: "The Matrix" },
+      { answer: "The Departed" },
       { answer: "Schindler's List" },
       { answer: "The Dark Knight" },
       { answer: "The Godfather: Part II" },

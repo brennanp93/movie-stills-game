@@ -1,5 +1,5 @@
 import { TwitterShareButton, TwitterIcon } from "react-share"
-export default function ResultPage({ prompt, score, correctAnswer, currentMovie }) {
+export default function ResultPage({ winner, score, correctAnswer, currentMovie }) {
   let scorePhrase = [
     `Boom! My current score is ${score}!`,
     `Yeah, baby! I'm at ${score} points!`,
@@ -18,14 +18,18 @@ export default function ResultPage({ prompt, score, correctAnswer, currentMovie 
     <>
       <div className='game-box '>
         <div>
-          <h1>{prompt}</h1>
-          <h2>The Correct Answer Was:</h2>
-          <h2><strong>{correctAnswer}</strong></h2>
+          {winner ?
+            <h1>Nice Job!</h1>
+            :
+            <h1>Better Luck Next Time!</h1>
+          }
+          <h2>The Correct Answer Was:&nbsp;{correctAnswer}</h2>
+          <h2><strong></strong></h2>
           <img className="image" src={currentMovie?.image} alt="" />
           <h1>Come back tomorrow to play again!</h1>
-          <div>
+          {/* <div>
             <p>Current Score: {score}</p>
-          </div>
+          </div> */}
           <div className="twitter">
             Share Your Score!
           </div>

@@ -354,7 +354,7 @@ export const movieList = [
     activeDate: "4/20/2023"
   },
 ]
-console.log(movieList.length)
+
 
 export let movieArray = [
   "The Shawshank Redemption (1994)",
@@ -431,4 +431,3 @@ export let movieArray = [
   "Good Will Hunting (1997)",
   "The Kid (1921)",
 ]
-console.log(movieArray.length)
