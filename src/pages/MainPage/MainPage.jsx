@@ -4,16 +4,16 @@ import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
 
-export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, winner, setWinner}) {
+export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, winner, setWinner }) {
   const [incomingGuess, setIncomingGuess] = useState('');
-  const [numGuesses, setNumGuesses] = useState(parseInt(localStorage.getItem('numGuesses'))|| 4);
-  
+  const [numGuesses, setNumGuesses] = useState(parseInt(localStorage.getItem('numGuesses')) || 4);
+
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
 
   //For Setting Cookies Expiration
   let midnight = new Date();
-  midnight.setHours(23, 59, 59, 0);
+  midnight.setHours(23, 59, 30, 0);
 
   //Current Movie (obj)
   let currentMovie = dailyQuestion
@@ -25,12 +25,16 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
     localStorage.setItem('numGuesses', numGuesses)
   }, [numGuesses])
 
-  //To reset numGuesses if it is not solved before midnight
-  // useEffect(() => {
-  //   if (midnight <= new Date()) {
-  //     localStorage.setItem('numGuesses', 4);
-  //   }
-  // }, [numGuesses])
+  // To reset numGuesses if it is not solved before midnight
+  useEffect(() => {
+    const resetNumGuess = setInterval(() => {
+      const now = new Date()
+      if (now >= midnight) {
+        localStorage.setItem('numGuesses', 4);
+      }
+    }, 1000)
+    return () => clearInterval(resetNumGuess)
+  }, [])
   //To save the score and if the user won or lost the round
   useEffect(() => {
     localStorage.setItem('score', score);
