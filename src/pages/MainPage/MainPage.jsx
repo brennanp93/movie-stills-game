@@ -6,11 +6,8 @@ import Fuse from "fuse.js";
 
 export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, winner, setWinner}) {
   const [incomingGuess, setIncomingGuess] = useState('');
-  const [numGuesses, setNumGuesses] = useState(() => {
-    let savedGuesses = localStorage.getItem('numGuesses');
-    return (parseInt(savedGuesses) || 4)
-  });
-
+  const [numGuesses, setNumGuesses] = useState(parseInt(localStorage.getItem('numGuesses'))|| 4);
+  
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
 

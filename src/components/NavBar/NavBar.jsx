@@ -1,6 +1,8 @@
-
-export default function NavBar({ score, setAboutPage }) {
-
+import { useEffect } from "react";
+export default function NavBar({ score, setAboutPage, aboutPage }) {
+  useEffect(() => {
+    localStorage.setItem('aboutPage', aboutPage)
+  }, [aboutPage])
   return (
     <header>
       <button className="link-button" onClick={() => setAboutPage(false)}>How Do I Play?</button>

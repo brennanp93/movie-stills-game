@@ -17,26 +17,14 @@ export default function App() {
   const [dailyQuestion, setDailyQuestion] = useState();
   const [playCount, setPlayCount] = useState(0)
   const [cookies, setCookies] = useCookies(['date'])
-  const [score, setScore] = useState(() => {
-    let savedScore = localStorage.getItem('score')
-    return parseInt(savedScore) || 0;
-  });
-  const [aboutPage, setAboutPage] = useState(() => {
-    let aboutBoolean = localStorage.getItem('aboutPage');
-    return JSON.parse(aboutBoolean)
-  })
-  const [winner, setWinner] = useState(() => {
-    let winnerStatus = localStorage.getItem('winner')
-    return (JSON.parse(winnerStatus) || false)
-  })
+  const [score, setScore] = useState(parseInt(localStorage.getItem('score')) || 0)
+  const [aboutPage, setAboutPage] = useState(JSON.parse(localStorage.getItem('aboutPage')))
+  const [winner, setWinner] = useState(JSON.parse(localStorage.getItem('winner')))
 
   async function updateCount(playCountData, id) {
     await playcountAPI.updateCount(playCountData, id)
   }
-  useEffect(() => {
-    localStorage.setItem('aboutPage', aboutPage)
-  }, [aboutPage])
-
+ 
   useEffect(function () {
     async function getDailyItems() {
       const entireAnswerKey = await answerKeyAPI.getAll();
@@ -67,7 +55,7 @@ export default function App() {
   return (
     <>
       <main className="App">
-        <NavBar score={score} setAboutPage={setAboutPage} />
+        <NavBar score={score} setAboutPage={setAboutPage} aboutPage={aboutPage}/>
         {!aboutPage ?
           <AboutPage setAboutPage={setAboutPage} />
           :
