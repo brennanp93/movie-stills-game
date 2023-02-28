@@ -208,7 +208,7 @@ const PlayCount = require('./models/playcount');
 
     {
       movie: "Pulp Fiction",
-      image: "https://ibb.co/4s5XTMb",
+      image: "https://i.ibb.co/M83tVpz/5579.webp",
       hints: ["Released: 1994", "Featuring: John Travolta", "Directed By: Quentin Tarantino"],
       activeDate: "2/27/2023"
     },
