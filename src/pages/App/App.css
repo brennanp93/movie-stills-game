@@ -69,7 +69,8 @@ footer {
   grid-row: span 1;
   grid-column: span 3;
   /* justify-content: center; */
-  /* align-items: center; */;
+  /* align-items: center; */
+  ;
   text-align: center;
   border-top: solid rgb(89, 89, 89) 2px;
   border-radius: 10px;
@@ -133,6 +134,7 @@ input {
   text-decoration: underline;
   font-family: 'Play', sans-serif;
   font-size: 20px;
+  padding: 0;
 }
 
 button {
@@ -157,9 +159,9 @@ form:invalid button[type="submit"] {
   color: rgb(184, 184, 184);
 }
 
-a {
+/* a {
   margin: 2%;
-}
+} */
 
 
 
@@ -179,12 +181,10 @@ a {
     font-size: 1em;
   }
 
-  /* header {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 20%;
-    margin-bottom: 10%;
+
+
+  /* .game-score {
+  margin-right: 2px;
   } */
 
   footer {
