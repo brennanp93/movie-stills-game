@@ -7,7 +7,7 @@
   color: rgb(89, 89, 89);
   margin: 0;
   height: 100vh;
-  
+
   font-family: 'Unbounded', cursive;
 }
 
@@ -20,7 +20,7 @@
   font-size: 2em;
   border-radius: 10px;
   height: 75%;
-  margin: 0 10% 0 10%;
+  /* margin: 0 10% 0 10%; */
 }
 
 .about-page>h2 {
@@ -29,6 +29,19 @@
 
 ul {
   list-style: none;
+  padding: 0;
+}
+
+li:last-child {
+  margin: 0;
+}
+
+li:first-child {
+  margin: 0;
+}
+
+li {
+  margin: 3%;
 }
 
 header {
@@ -55,15 +68,15 @@ header {
 footer {
   grid-row: span 1;
   grid-column: span 3;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */;
   text-align: center;
   border-top: solid rgb(89, 89, 89) 2px;
   border-radius: 10px;
   color: rgb(89, 89, 89);
-  padding-top: 1%;
   font-family: 'Play', sans-serif;
   font-size: larger;
+  padding: 1%;
 }
 
 .game-box {
@@ -73,15 +86,15 @@ footer {
 }
 
 img {
-  height: 33%;
-  width: 100%;
+  min-height: 25%;
+  width: 75%;
   border-radius: 15px;
 }
 
-.image {
+/* .image {
   max-width: 50%;
   border-radius: 10px;
-}
+} */
 
 .logo {
   max-width: 75px;
@@ -103,21 +116,23 @@ input {
   font-size: 17px;
   font-family: 'Play', sans-serif;
 }
+
 .twitter {
-margin-bottom: 1%;
+  margin-bottom: 1%;
 }
+
 .play-button {
-  margin-top: 2%;
+  /* margin-top: 2%; */
   width: auto;
   font-size: larger;
 }
 
-.link-button{
+.link-button {
   background: none;
-  color:inherit;
+  color: inherit;
   text-decoration: underline;
   font-family: 'Play', sans-serif;
-  font-size: 20px ;
+  font-size: 20px;
 }
 
 button {
@@ -146,23 +161,31 @@ a {
   margin: 2%;
 }
 
-@media (max-width: 500px) {
+
+
+@media (max-width: 450px) {
   .App {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 3fr, 1fr;
+    grid-template-columns: none;
   }
 
-  image {
-    min-height: 75%;
+  .image {
+    min-height: 100%;
+    border-radius: 15px;
   }
 
-  header {
+  h2 {
+    font-size: 1em;
+  }
+
+  /* header {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 20%;
     margin-bottom: 10%;
-  }
+  } */
 
   footer {
     margin-top: auto;
@@ -170,20 +193,24 @@ a {
     padding: 3% 0;
   }
 
-  .game-box {
-    margin-top: 15%;
-    padding: 5px
-  }
+
 
   .about-page {
-    grid-column: 1/span 3;
+    /* grid-column: 1/span 3; */
     text-align: center;
     align-items: center;
-    display: grid;
-    grid-template-rows: 10% 1fr .5fr;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 10% 1fr .5fr; */
     font-size: 1em;
     border-radius: 10px;
     height: 75%;
-    margin: 0 5% 5% 5%;
+    /* padding: 5%; */
+    /* margin: 0 5% 5% 5%; */
+  }
+
+  article {
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 }

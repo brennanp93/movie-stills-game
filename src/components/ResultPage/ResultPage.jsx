@@ -35,7 +35,7 @@ export default function ResultPage({ winner, score, correctAnswer, currentMovie 
           }
           <h2>The Correct Answer Was:&nbsp;{correctAnswer}</h2>
           <img className="image" src={currentMovie?.image} alt="" />
-          <h1>Come back tomorrow to play again!</h1>
+          <h2>Come back tomorrow to play again!</h2>
           <div className="twitter">
             Share Your Score!
           </div>
