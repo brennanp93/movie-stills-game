@@ -16,4 +16,4 @@ export default function SubmitForm({ handleSubmit, incomingGuess, handleChange, 
       </form>
     </div>
   )
-}
+};

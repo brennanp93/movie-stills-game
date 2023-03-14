@@ -28,4 +28,4 @@ export default function HintPage({ currentMovie, numGuesses }) {
       }
     </>
   )
-}
+};

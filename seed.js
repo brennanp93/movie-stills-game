@@ -270,38 +270,38 @@ const PlayCount = require('./models/playcount');
     },
     {
       movie: "The Prestige",
-      image: "",
-      hints: ["", "", ""],
+      image: "https://i.ibb.co/7RDg750/15-1163.jpg",
+      hints: ["Released in 2006", "Featuring David Bowie", "Directed by Christopher Nolan"],
       activeDate: "3/9/2023"
     },
     {
       movie: "American History X",
-      image: "",
-      hints: ["", "", ""],
+      image: "https://i.ibb.co/7QqSss7/09-68.jpg",
+      hints: ["Released in 1998", "Featuring Ethan Suplee", "Starring Edward Norton"],
       activeDate: "3/10/2023"
     },
     {
       movie: "Gladiator",
-      image: "",
-      hints: ["", "", ""],
+      image: "https://i.ibb.co/pywfq6V/026.jpg",
+      hints: ["Released in 2000", "Directed By Ridley Scott", "Starring Russell Crowe"],
       activeDate: "3/11/2023"
     },
     {
       movie: "Whiplash",
-      image: "",
-      hints: ["", "", ""],
+      image: "https://i.ibb.co/4RFbvZH/49-1278.jpg",
+      hints: ["Starring Miles Teller", "Released in 2014", "Also starring J.K. Simmons"],
       activeDate: "3/12/2023"
     },
     {
-      movie: "The Lion King",
-      image: "",
-      hints: ["", "", ""],
+      movie: "Singin' in the Rain",
+      image: "https://i.ibb.co/qxpWD8w/27-937.jpg",
+      hints: ["Released in 1952", "Genre: Musical, Comedy, Romance", "Starring Gene Kelly"],
       activeDate: "3/13/2023"
     },
     {
-      movie: "Terminator 2: Judgment Day",
-      image: "",
-      hints: ["", "", ""],
+      movie: "Vertigo",
+      image: "https://i.ibb.co/SmpXL51/19-1298.jpg",
+      hints: ["Released 1958", "Starring Kim Novak", "Directed By Alfred Hitchcock"],
       activeDate: "3/14/2023"
     },
     {
@@ -401,7 +401,7 @@ const PlayCount = require('./models/playcount');
       activeDate: "4/11/2023"
     },
     {
-      movie: "Singin' in the Rain",
+      movie: "",
       image: "",
       hints: ["", "", ""],
       activeDate: "4/12/2023"
@@ -558,6 +558,12 @@ const PlayCount = require('./models/playcount');
       { answer: "Se7en" },
       { answer: "Saving Private Ryan" },
       { answer: "One Flew Over the Cuckoo's Nest" },
+      { answer: "The Prestige" },
+      { answer: "American History X"},
+      { answer: "Gladiator" },
+      { answer: "Whiplash" },
+      { answer: "Singin' in the Rain" },
+      { answer: "Vertigo" },
       { answer: "Goodfellas" },
       { answer: "The Matrix" },
       { answer: "The Departed" },

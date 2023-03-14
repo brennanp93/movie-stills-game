@@ -7,4 +7,4 @@ export async function getAll() {
 
 export async function updateCount(countData, id) {
   return sendRequest(`${BASE_URL}/${id}`, 'PUT', countData)
-}
+};

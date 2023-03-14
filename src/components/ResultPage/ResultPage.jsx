@@ -1,4 +1,4 @@
-import { TwitterShareButton, TwitterIcon } from "react-share"
+import { TwitterShareButton, TwitterIcon } from "react-share";
 export default function ResultPage({ winner, score, correctAnswer, currentMovie }) {
   let scorePhrase = [
     `Boom! My current score is ${score}!`,
@@ -22,8 +22,8 @@ export default function ResultPage({ winner, score, correctAnswer, currentMovie 
     `Feeling like a champion! Score: ${score}!`,
     `Step aside, everyone! ${score} points and still going strong!`
   ];
-  let randomIdx = Math.floor(Math.random() * scorePhrase.length)
-  let currentTweet = scorePhrase[randomIdx]
+  let randomIdx = Math.floor(Math.random() * scorePhrase.length);
+  let currentTweet = scorePhrase[randomIdx];
   return (
     <>
       <div className='game-box '>
@@ -49,4 +49,4 @@ export default function ResultPage({ winner, score, correctAnswer, currentMovie 
       </div>
     </>
   )
-}
+};

@@ -5,13 +5,7 @@ const User = require('../../models/user');
 module.exports = {
   create,
   login,
-  // checkToken
 };
-
-// function checkToken(req, res) {
-//   console.log('req.user', req.user);
-//   res.json(req.exp);
-// }
 
 async function create(req, res) {
   try {
@@ -22,7 +16,7 @@ async function create(req, res) {
   } catch (err) {
     res.status(400).json(err);
   }
-}
+};
 
 async function login(req, res) {
   try {
@@ -35,7 +29,7 @@ async function login(req, res) {
   } catch (err) {
     res.status(400).json('Bad Credentials');
   }
-}
+};
 
 /*--- Helper Functions --*/
 
@@ -46,4 +40,4 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   );
-}
+};
