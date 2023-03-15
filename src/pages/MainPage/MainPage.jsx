@@ -1,12 +1,25 @@
 import { useState, useEffect } from "react";
-import SubmitForm from "../../components/SubmitForm/SubmitForm"
+import SubmitForm from "../../components/SubmitForm/SubmitForm";
 import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
 
-export default function MainPage({ playCount, dailyQuestion, answerKey, cookies, setCookies, updateCount, score, setScore, winner, setWinner }) {
-  const [incomingGuess, setIncomingGuess] = useState('');
-  const [numGuesses, setNumGuesses] = useState(parseInt(localStorage.getItem('numGuesses')) || 4);
+export default function MainPage({
+  playCount,
+  dailyQuestion,
+  answerKey,
+  cookies,
+  setCookies,
+  updateCount,
+  score,
+  setScore,
+  winner,
+  setWinner,
+}) {
+  const [incomingGuess, setIncomingGuess] = useState("");
+  const [numGuesses, setNumGuesses] = useState(
+    parseInt(localStorage.getItem("numGuesses")) || 4
+  );
 
   //For Setting Cookies
   const todayDate = new Date().toLocaleDateString();
@@ -18,106 +31,109 @@ export default function MainPage({ playCount, dailyQuestion, answerKey, cookies,
   //Current Movie (obj)
   let currentMovie = dailyQuestion;
   let correctAnswer = currentMovie?.movie;
-  let minLengthAnswer = Math?.floor(correctAnswer?.length * .66);
+  let minLengthAnswer = Math?.floor(correctAnswer?.length * 0.66);
 
   //To store numGuesses in case of refresh
   useEffect(() => {
-    localStorage.setItem('numGuesses', numGuesses)
+    localStorage.setItem("numGuesses", numGuesses);
   }, [numGuesses]);
 
   // To reset numGuesses if it is not solved before midnight
   useEffect(() => {
     const resetNumGuess = setInterval(() => {
-      const now = new Date()
+      const now = new Date();
       if (now >= midnight) {
-        localStorage.setItem('numGuesses', 4);
+        localStorage.setItem("numGuesses", 4);
       }
     }, 1000);
     return () => clearInterval(resetNumGuess);
-  },);
+  });
   //To save the score and if the user won or lost the round
   useEffect(() => {
-    localStorage.setItem('score', score);
-    localStorage.setItem('winner', winner)
+    localStorage.setItem("score", score);
+    localStorage.setItem("winner", winner);
   }, [winner, score]);
   function handleSubmit(evt) {
     evt.preventDefault();
     /*---fuzzy search---*/
     const options = {
       includeScore: true,
-      keys: [{ name: 'answer' }],
+      keys: [{ name: "answer" }],
     };
-    const fuse = new Fuse(answerKey, options)
+    const fuse = new Fuse(answerKey, options);
     const possibleResult = fuse.search(incomingGuess)[0]?.item.answer;
     let result;
     if (possibleResult === correctAnswer) {
       result = correctAnswer;
-    } else { result = 'zzyzx' };
+    } else {
+      result = "zzyzx";
+    }
 
     /*---^ fuzzy search ^---*/
     if (result === correctAnswer) {
-      setIncomingGuess('');
+      setIncomingGuess("");
       setNumGuesses(4);
-      setCookies('date', todayDate, { expires: midnight });
+      setCookies("date", todayDate, { expires: midnight });
       setScore(score + numGuesses);
       setWinner(true);
       playCount.count += 1;
     } else if (result !== correctAnswer && numGuesses === 4) {
       setNumGuesses(numGuesses - 1);
-      setIncomingGuess('');
+      setIncomingGuess("");
     } else if (result !== correctAnswer && numGuesses === 3) {
       setNumGuesses(numGuesses - 1);
-      setIncomingGuess('');
+      setIncomingGuess("");
     } else if (result !== correctAnswer && numGuesses === 2) {
       setNumGuesses(numGuesses - 1);
-      setIncomingGuess('');
-    };
+      setIncomingGuess("");
+    }
     if (result !== correctAnswer && numGuesses === 1) {
-      setCookies('date', todayDate, { expires: midnight });
+      setCookies("date", todayDate, { expires: midnight });
       playCount.count += 1;
       setNumGuesses(4);
       setWinner(false);
-    };
-    updateCount(playCount, playCount._id)
-  };
+    }
+    updateCount(playCount, playCount._id);
+  }
   function handleChange(evt) {
-    const newGuess = evt.target.value
-    setIncomingGuess(newGuess)
-  };
+    const newGuess = evt.target.value;
+    setIncomingGuess(newGuess);
+  }
 
   return (
-    <>{currentMovie?.activeDate === cookies.date ?
-      <ResultPage
-        score={score}
-        correctAnswer={correctAnswer}
-        currentMovie={currentMovie}
-        numGuesses={numGuesses}
-        winner={winner}
-      />
-      :
-      <div className="game-box">
-        <div className="game-box-grids">
-          {numGuesses === 1 ?
-            <h2>Final Guess!</h2>
-            :
-            <h2>You have {numGuesses} guesses remaining!</h2>
-          }
-          <div>
-            <img src={currentMovie?.image} alt="The Current Movie Being Displayed" />
-          </div>
-          <SubmitForm
-            handleSubmit={handleSubmit}
-            incomingGuess={incomingGuess}
-            handleChange={handleChange}
-            minLengthAnswer={minLengthAnswer}
-          />
-          <HintPage
-            numGuesses={numGuesses}
-            currentMovie={currentMovie}
-          />
+    <>
+      {currentMovie?.activeDate === cookies.date ? (
+        <ResultPage
+          score={score}
+          correctAnswer={correctAnswer}
+          currentMovie={currentMovie}
+          numGuesses={numGuesses}
+          winner={winner}
+        />
+      ) : (
+        <div className="game-box">
+          {/* <div className="game-box-grids"> */}
+            {numGuesses === 1 ? (
+              <h2>Final Guess!</h2>
+            ) : (
+              <h2>You have {numGuesses} guesses remaining!</h2>
+            )}
+            <div className="current-movie-image">
+              <img
+                src={currentMovie?.image}
+                alt="The Current Movie Being Displayed"
+              />
+            </div>
+            <SubmitForm
+              handleSubmit={handleSubmit}
+              incomingGuess={incomingGuess}
+              handleChange={handleChange}
+              minLengthAnswer={minLengthAnswer}
+            />
+            <HintPage numGuesses={numGuesses} currentMovie={currentMovie} />
+          {/* </div> */}
         </div>
-      </div>
-    }
+      )}
     </>
   );
-};
+}
