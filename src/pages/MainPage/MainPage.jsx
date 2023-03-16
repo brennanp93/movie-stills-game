@@ -112,26 +112,25 @@ export default function MainPage({
         />
       ) : (
         <div className="game-box">
-          {/* <div className="game-box-grids"> */}
-            {numGuesses === 1 ? (
-              <h2>Final Guess!</h2>
-            ) : (
-              <h2>You have {numGuesses} guesses remaining!</h2>
-            )}
-            <div className="current-movie-image">
-              <img
-                src={currentMovie?.image}
-                alt="The Current Movie Being Displayed"
-              />
-            </div>
-            <SubmitForm
-              handleSubmit={handleSubmit}
-              incomingGuess={incomingGuess}
-              handleChange={handleChange}
-              minLengthAnswer={minLengthAnswer}
+          {numGuesses === 1 ? (
+            <h2>Final Guess!</h2>
+          ) : (
+            <h2>You have {numGuesses} guesses remaining!</h2>
+          )}
+
+          <div className="current-movie-image">
+            <img
+              src={currentMovie?.image}
+              alt="The Current Movie Being Displayed"
             />
-            <HintPage numGuesses={numGuesses} currentMovie={currentMovie} />
-          {/* </div> */}
+          </div>
+          <SubmitForm
+            handleSubmit={handleSubmit}
+            incomingGuess={incomingGuess}
+            handleChange={handleChange}
+            minLengthAnswer={minLengthAnswer}
+          />
+          <HintPage numGuesses={numGuesses} currentMovie={currentMovie} />
         </div>
       )}
     </>
