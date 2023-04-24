@@ -13,7 +13,7 @@ const PlayCount = require('./models/playcount');
       movie: 'The Shawshank Redemption',
       hints: ['Released: 1994', 'Starring: Tim Robbins', 'Based on a Stephen King Novel'],
       completed: false,
-      activeDate: '3/15/2023',
+      activeDate: '4/23/2023',
       count: 0,
     },
     {
@@ -21,7 +21,7 @@ const PlayCount = require('./models/playcount');
       movie: 'There Will Be Blood',
       hints: ['Released: 2007', 'Directed By: Paul Thomas Anderson', 'Starring: Daniel Day-Lewis'],
       completed: false,
-      activeDate: '3/16/2023',
+      activeDate: '4/24/2023',
       count: 0,
     },
     {
@@ -29,7 +29,7 @@ const PlayCount = require('./models/playcount');
       movie: 'Taxi Driver',
       hints: ['Released: 1976', 'Directed By: Martin Scorsese', 'Starring: Robert De Niro'],
       completed: false,
-      activeDate: '3/17/2023',
+      activeDate: '4/25/2023',
       count: 0,
     },
     {
@@ -37,7 +37,7 @@ const PlayCount = require('./models/playcount');
       movie: 'Shutter Island',
       hints: ['Released: 2010', 'Directed By: Martin Scorsese', 'Starring: Leonardo DiCaprio'],
       completed: false,
-      activeDate: '3/18/2023',
+      activeDate: '4/26/2023',
       count: 0,
     },
     {
@@ -45,7 +45,7 @@ const PlayCount = require('./models/playcount');
       movie: 'Django Unchained',
       hints: ['Released: 2012', 'Directed By: Quentin Tarantino', 'Starring: Jamie Foxx'],
       completed: false,
-      activeDate: '3/19/2023',
+      activeDate: '4/27/2023',
       count: 0,
     },
     {
@@ -53,7 +53,7 @@ const PlayCount = require('./models/playcount');
       movie: 'The Godfather',
       hints: ['Released: 1972', 'Based on a Novel by Mario Puzo', 'Directed by Francis Ford Coppola'],
       completed: false,
-      activeDate: '3/20/2023',
+      activeDate: '4/28/2023',
       count: 0,
     },
     {
@@ -61,7 +61,7 @@ const PlayCount = require('./models/playcount');
       movie: 'Full Metal Jacket',
       hints: ['Released: 1987', 'Genre: Drama, War', 'Directed by Stanley Kubrick'],
       completed: false,
-      activeDate: '3/21/2023',
+      activeDate: '4/29/2023',
       count: 1,
     },
     {
@@ -69,7 +69,7 @@ const PlayCount = require('./models/playcount');
       movie: 'Dunkirk',
       hints: ['Realeased in 2017', 'City in France', 'Directed by Christopher Nolan'],
       completed: false,
-      activeDate: '3/22/2023',
+      activeDate: '4/30/2023',
       count: 0,
     },
     {
@@ -77,7 +77,7 @@ const PlayCount = require('./models/playcount');
       movie: "A Knight's Tale",
       hints: ['Released: 2001', 'Supporting Cast: Alan Tudyk, Paul Bettany', 'Starring: Heath Ledger'],
       completed: false,
-      activeDate: '3/23/2023',
+      activeDate: '5/1/2023',
       count: 3,
     },
     {
@@ -85,7 +85,7 @@ const PlayCount = require('./models/playcount');
       movie: "Ex Machina",
       hints: ['Released: 2014', 'Genre: Drama, Sci-Fi, Thriller', 'Starring: Domhnall Gleeson, Oscar Isaac'],
       completed: false,
-      activeDate: '3/24/2023',
+      activeDate: '5/2/2023',
       count: 3,
     },
     {
@@ -93,7 +93,7 @@ const PlayCount = require('./models/playcount');
       movie: "Home Alone 2: Lost In New York",
       hints: ['Released: 1992', 'Directed By: Chris Columbus', "Featuring: Catherine O'Hara, Joe Pesci"],
       completed: false,
-      activeDate: '3/25/2023',
+      activeDate: '5/3/2023',
       count: 0,
     },
     {
@@ -101,7 +101,7 @@ const PlayCount = require('./models/playcount');
       movie: "Terminator 2: Judgement Day",
       hints: ['Released: 1991', 'Directed By: James Cameron', "Featuring: Edward Furlong, Robert Patrick"],
       completed: false,
-      activeDate: '3/27/2023',
+      activeDate: '5/4/2023',
       count: 0,
     },
     {
@@ -109,7 +109,7 @@ const PlayCount = require('./models/playcount');
       movie: "Waterworld",
       hints: ['Released: 1995', "Featuring: Tina Majorino", "Starring: Kevin Costner"],
       completed: false,
-      activeDate: '3/28/2023',
+      activeDate: '5/5/2023',
       count: 0,
     },
     {
@@ -117,7 +117,7 @@ const PlayCount = require('./models/playcount');
       movie: "Apollo 13",
       hints: ['Released: 1995', "Directed By: Ron Howard", "Featuring: Bill Paxton"],
       completed: false,
-      activeDate: '3/29/2023',
+      activeDate: '5/6/2023',
       count: 0,
     },
     {
@@ -125,7 +125,7 @@ const PlayCount = require('./models/playcount');
       movie: "Pulp Fiction",
       hints: ["Released: 1994", "Featuring: John Travolta", "Directed By: Quentin Tarantino"],
       completed: false,
-      activeDate: '3/30/2023',
+      activeDate: '5/7/2023',
       count: 15,
     },
     {
@@ -133,7 +133,7 @@ const PlayCount = require('./models/playcount');
       movie: 'Edward Scissorhands',
       hints: ['Released in 1990', 'Directed by: Tim Burton', 'Featuring: Winona Ryder'],
       completed: false,
-      activeDate: '3/31/2023',
+      activeDate: '5/8/2023',
       count: 0,
     },
     {
@@ -141,69 +141,69 @@ const PlayCount = require('./models/playcount');
       movie: 'The Sound of Music',
       hints: ['Released in 1965', 'Genre: Musical', 'Starring: Julie Andrews'],
       completed: false,
-      activeDate: '4/1/2023',
+      activeDate: '5/9/2023',
       count: 0,
     },
     {
       image: 'https://i.ibb.co/HPDS8H7/2890.webp',
       movie: 'Jurrasic Park',
       hints: ['Released in 1993', 'Based on a novel by Michael Chrichton', 'Featuring: Jeff Goldblum',],
-      activeDate: '4/2/2023',
+      activeDate: '5/10/2023',
     },
     {
       image: 'https://i.ibb.co/8b3s0Mm/65.webp',
       movie: 'Little Women',
       hints: ['Released in 1994', 'Featuring Susan Sarandon', 'Also Featuring Winona Ryder'],
-      activeDate: '4/3/2023',
+      activeDate: '5/11/2023',
     },
     {
       image: 'https://i.ibb.co/8mVvLmR/9358.webp',
       movie: 'Back to the Future',
       hints: ['Released in 1985', 'Featuring Lea Thompson', 'DeLorean'],
-      activeDate: '4/4/2023',
+      activeDate: '5/12/2023',
     },
     {
       image: 'https://i.ibb.co/L0Cyv60/4801.webp',
       movie: 'Chinatown',
       hints: ['Released in 1974', 'Featuring Faye Dunaway', 'Starring Jack Nicholson'],
-      activeDate: '4/5/2023',
+      activeDate: '5/13/2023',
 
     },
     {
       movie: "The Shawshank Redemption",
       image: "https://i.ibb.co/tCdbfQW/7616.webp",
       hints: ['Released: 1994', 'Starring: Tim Robbins', 'Based on a Stephen King Novel'],
-      activeDate: '4/6/2023',
+      activeDate: '5/14/2023',
     },
     {
       movie: "The Departed",
       image: "https://i.ibb.co/jMY5q0x/32-1053.jpg",
       hints: ["Released 2006", "Directed By Martin Scorcsese", "Featuring Leonardo DiCaprio"],
-      activeDate: '4/7/2023',
+      activeDate: '5/15/2023',
     },
     {
       movie: "The Godfather: Part II",
       image: "https://i.ibb.co/nc59Y8v/5215.webp",
       hints: ["Featuring Robert De Niro", "Featuring Diane Keaton", "Directed By Francis Ford Coppola"],
-      activeDate: '4/8/2023',
+      activeDate: '5/16/2023',
     },
     {
       movie: "The Dark Knight",
       image: "https://i.ibb.co/T2BfTvR/0234.jpg",
       hints: ["Released 2008", "Directed By Christopher Nolan", "Starring Christian Bale"],
-      activeDate: '4/9/2023',
+      activeDate: '5/17/2023',
     },
     {
       movie: "Léon: The Professional",
       image: "https://i.ibb.co/JKBRx8W/03-599.jpg",
       hints: ["Released in 1994", "Starring Natalie Portman", "Featuring Gary Oldman"],
-      activeDate: '4/10/2023',
+      activeDate: '5/18/2023',
     },
     {
       movie: "Schindler's List",
       image: "https://i.ibb.co/RHLvywf/7953.jpg",
       hints: ["Takes Place During World War II", "Released 1993", "Directed By Steven Spielberg"],
-      activeDate: '4/11/2023',
+      activeDate: '5/19/2023',
     },
 
     {
