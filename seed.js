@@ -146,7 +146,7 @@ const PlayCount = require('./models/playcount');
     },
     {
       image: 'https://i.ibb.co/HPDS8H7/2890.webp',
-      movie: 'Jurrasic Park',
+      movie: 'Jurassic Park',
       hints: ['Released in 1993', 'Based on a novel by Michael Chrichton', 'Featuring: Jeff Goldblum',],
       activeDate: '5/10/2023',
     },
