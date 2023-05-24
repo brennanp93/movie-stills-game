@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 .App {
   display: grid;
   grid-template-rows: auto 7fr 10%;
@@ -148,7 +151,11 @@ form:invalid button[type="submit"] {
   color: rgb(184, 184, 184);
 }
 
-@media (max-width: 450px) {
+
+
+
+
+@media (max-width: 480px) {
   .App {
     display: grid;
     grid-template-rows: 15% 1fr 10%;

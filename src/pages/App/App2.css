@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  color: red;
+}
+body {
+  height: 100vh;
+}
+.App{
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+}
+
+header{
+  grid-row: 1/2;
+  display: flex;
+  height: 50%;
+  align-items: center;
+  text-align: center;;
+}
+.game-box{
+  grid-row: 2/3;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.current-movie-image{
+  width: 95vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+img{
+  height: auto;
+  width: 95%;
+  border-radius: 5px;
+}

@@ -10,7 +10,8 @@ import MainPage from "../MainPage/MainPage";
 import Footer from "../../components/Footer/Footer";
 import AboutPage from "../../components/AboutPage/AboutPage";
 
-import "./App.css";
+// import "./App.css";
+import "./App2.css"
 
 export default function App() {
   const [answerKey, setAnswerKey] = useState();
