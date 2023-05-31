@@ -1,9 +1,14 @@
-export default function SubmitForm({ handleSubmit, incomingGuess, handleChange, minLengthAnswer }) {
+export default function SubmitForm({
+  handleSubmit,
+  incomingGuess,
+  handleChange,
+  minLengthAnswer,
+}) {
   return (
-    <div className='form-container'>
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <input
-          className='mb-4'
+          className="mb-4"
           autoComplete="off"
           name="Guess"
           value={incomingGuess}
@@ -15,5 +20,5 @@ export default function SubmitForm({ handleSubmit, incomingGuess, handleChange, 
         <button type="submit"> Submit Answer</button>
       </form>
     </div>
-  )
-};
+  );
+}
