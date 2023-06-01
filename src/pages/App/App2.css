@@ -64,6 +64,7 @@ input {
   border: solid #d2d2d2 1px;
   margin: 1%;
   text-align: center;
+  font-size: 16px;
 }
 .hint-page {
   margin-bottom: 1%;
