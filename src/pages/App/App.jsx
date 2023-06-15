@@ -12,7 +12,6 @@ import AboutPage from "../../components/AboutPage/AboutPage";
 
 // import "./App.css";
 import "./App2.css"
-
 export default function App() {
   const [answerKey, setAnswerKey] = useState();
   const [dailyQuestion, setDailyQuestion] = useState();
@@ -20,14 +19,15 @@ export default function App() {
   const [cookies, setCookies] = useCookies(["date"]);
   const [score, setScore] = useState(
     parseInt(localStorage.getItem("score")) || 0
-  );
-  const [aboutPage, setAboutPage] = useState(
-    JSON.parse(localStorage.getItem("aboutPage"))
-  );
-  const [winner, setWinner] = useState(
-    JSON.parse(localStorage.getItem("winner"))
-  );
-
+    );
+    const [aboutPage, setAboutPage] = useState(
+      JSON.parse(localStorage.getItem("aboutPage"))
+      );
+      const [winner, setWinner] = useState(
+        JSON.parse(localStorage.getItem("winner"))
+        );
+        
+        console.log(dailyQuestion)
   async function updateCount(playCountData, id) {
     await playcountAPI.updateCount(playCountData, id);
   }
