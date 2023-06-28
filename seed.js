@@ -17,7 +17,7 @@ const PlayCount = require("./models/playcount");
         "Based on a Stephen King Novel",
       ],
       completed: false,
-      activeDate: "6/14/2023",
+      activeDate: "6/28/2023",
       count: 0,
     },
     {
@@ -29,7 +29,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Daniel Day-Lewis",
       ],
       completed: false,
-      activeDate: "6/15/2023",
+      activeDate: "6/29/2023",
       count: 0,
     },
     {
@@ -41,7 +41,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Robert De Niro",
       ],
       completed: false,
-      activeDate: "6/16/2023",
+      activeDate: "6/30/2023",
       count: 0,
     },
     {
@@ -53,7 +53,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Leonardo DiCaprio",
       ],
       completed: false,
-      activeDate: "6/17/2023",
+      activeDate: "7/1/2023",
       count: 0,
     },
     {
@@ -65,7 +65,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Jamie Foxx",
       ],
       completed: false,
-      activeDate: "6/18/2023",
+      activeDate: "7/2/2023",
       count: 0,
     },
     {
@@ -77,7 +77,7 @@ const PlayCount = require("./models/playcount");
         "Directed by Francis Ford Coppola",
       ],
       completed: false,
-      activeDate: "6/19/2023",
+      activeDate: "7/3/2023",
       count: 0,
     },
     {
@@ -89,19 +89,19 @@ const PlayCount = require("./models/playcount");
         "Directed by Stanley Kubrick",
       ],
       completed: false,
-      activeDate: "6/20/2023",
+      activeDate: "7/4/2023",
       count: 1,
     },
     {
       image: "https://i.imgur.com/Ojpt6uJ.jpg",
       movie: "Dunkirk",
       hints: [
-        "Realeased in 2017",
+        "Released in 2017",
         "City in France",
         "Directed by Christopher Nolan",
       ],
       completed: false,
-      activeDate: "6/21/2023",
+      activeDate: "7/5/2023",
       count: 0,
     },
     {
@@ -113,7 +113,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Heath Ledger",
       ],
       completed: false,
-      activeDate: "6/22/2023",
+      activeDate: "7/6/2023",
       count: 3,
     },
     {
@@ -125,7 +125,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Domhnall Gleeson, Oscar Isaac",
       ],
       completed: false,
-      activeDate: "6/23/2023",
+      activeDate: "7/7/2023",
       count: 3,
     },
     {
@@ -137,7 +137,7 @@ const PlayCount = require("./models/playcount");
         "Featuring: Catherine O'Hara, Joe Pesci",
       ],
       completed: false,
-      activeDate: "6/24/2023",
+      activeDate: "7/8/2023",
       count: 0,
     },
     {
@@ -149,7 +149,7 @@ const PlayCount = require("./models/playcount");
         "Featuring: Edward Furlong, Robert Patrick",
       ],
       completed: false,
-      activeDate: "6/25/2023",
+      activeDate: "7/9/2023",
       count: 0,
     },
     {
@@ -161,7 +161,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Kevin Costner",
       ],
       completed: false,
-      activeDate: "6/26/2023",
+      activeDate: "7/10/2023",
       count: 0,
     },
     {
@@ -173,10 +173,9 @@ const PlayCount = require("./models/playcount");
         "Featuring: Bill Paxton",
       ],
       completed: false,
-      activeDate: "6/27/2023",
+      activeDate: "7/11/2023",
       count: 0,
     },
-    
     {
       image: "https://i.ibb.co/NNmxjDD/1715.webp",
       movie: "Pulp Fiction",
