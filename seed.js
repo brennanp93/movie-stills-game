@@ -205,7 +205,7 @@ const PlayCount = require("./models/playcount");
       movie: "The Sound of Music",
       hints: ["Released in 1965", "Genre: Musical", "Starring: Julie Andrews"],
       completed: false,
-      activeDate: "8/14/2023",
+      activeDate: "9/14/2023",
       count: 0,
     },
     {
@@ -216,7 +216,7 @@ const PlayCount = require("./models/playcount");
         "Based on a novel by Michael Chrichton",
         "Featuring: Jeff Goldblum",
       ],
-      activeDate: "8/15/2023",
+      activeDate: "9/15/2023",
     },
     {
       image: "https://i.ibb.co/8b3s0Mm/65.webp",
@@ -226,13 +226,13 @@ const PlayCount = require("./models/playcount");
         "Featuring Susan Sarandon",
         "Also Featuring Winona Ryder",
       ],
-      activeDate: "8/16/2023",
+      activeDate: "9/16/2023",
     },
     {
       image: "https://i.ibb.co/8mVvLmR/9358.webp",
       movie: "Back to the Future",
       hints: ["Released in 1985", "Featuring Lea Thompson", "DeLorean"],
-      activeDate: "8/17/2023",
+      activeDate: "9/17/2023",
     },
     {
       image: "https://i.ibb.co/L0Cyv60/4801.webp",
@@ -242,7 +242,7 @@ const PlayCount = require("./models/playcount");
         "Featuring Faye Dunaway",
         "Starring Jack Nicholson",
       ],
-      activeDate: "8/18/2023",
+      activeDate: "9/18/2023",
     },
     {
       movie: "The Shawshank Redemption",
@@ -252,7 +252,7 @@ const PlayCount = require("./models/playcount");
         "Starring: Tim Robbins",
         "Based on a Stephen King Novel",
       ],
-      activeDate: "8/19/2023",
+      activeDate: "9/19/2023",
     },
     {
       movie: "The Departed",
@@ -262,7 +262,7 @@ const PlayCount = require("./models/playcount");
         "Directed By Martin Scorcsese",
         "Featuring Leonardo DiCaprio",
       ],
-      activeDate: "8/20/2023",
+      activeDate: "9/20/2023",
     },
     {
       movie: "The Godfather: Part II",
@@ -272,7 +272,7 @@ const PlayCount = require("./models/playcount");
         "Featuring Diane Keaton",
         "Directed By Francis Ford Coppola",
       ],
-      activeDate: "8/21/2023",
+      activeDate: "9/21/2023",
     },
     {
       movie: "The Dark Knight",
@@ -282,7 +282,7 @@ const PlayCount = require("./models/playcount");
         "Directed By Christopher Nolan",
         "Starring Christian Bale",
       ],
-      activeDate: "8/22/2023",
+      activeDate: "9/22/2023",
     },
     {
       movie: "Léon: The Professional",
@@ -292,7 +292,7 @@ const PlayCount = require("./models/playcount");
         "Starring Natalie Portman",
         "Featuring Gary Oldman",
       ],
-      activeDate: "8/23/2023",
+      activeDate: "9/23/2023",
     },
     // {
     //   movie: "Schindler's List",
@@ -313,7 +313,7 @@ const PlayCount = require("./models/playcount");
         "Featuring: John Travolta",
         "Directed By: Quentin Tarantino",
       ],
-      activeDate: "8/24/2023",
+      activeDate: "9/24/2023",
     },
     {
       movie: "Forrest Gump",
@@ -323,7 +323,7 @@ const PlayCount = require("./models/playcount");
         "Featuring Robin Wright",
         "Starring Tom Hanks",
       ],
-      activeDate: "8/25/2023",
+      activeDate: "9/25/2023",
     },
     {
       movie: "Fight Club",
@@ -333,7 +333,7 @@ const PlayCount = require("./models/playcount");
         "Featuring Meat Loaf",
         "Starring Edward Norton",
       ],
-      activeDate: "8/26/2023",
+      activeDate: "9/26/2023",
     },
     {
       movie: "The Matrix",
@@ -343,7 +343,7 @@ const PlayCount = require("./models/playcount");
         "Genre: Action/Sci-Fi",
         "Starring Keanu Reeves",
       ],
-      activeDate: "8/27/2023",
+      activeDate: "9/27/2023",
     },
     {
       movie: "Goodfellas",
@@ -353,7 +353,7 @@ const PlayCount = require("./models/playcount");
         "Written By Nicholas Pileggi",
         "Starring Ray Liotta",
       ],
-      activeDate: "8/28/2023",
+      activeDate: "9/28/2023",
     },
     {
       movie: "One Flew Over the Cuckoo's Nest",
@@ -363,7 +363,7 @@ const PlayCount = require("./models/playcount");
         "Featuring Danny DeVito",
         "Starring Jack Nicholson",
       ],
-      activeDate: "8/29/2023",
+      activeDate: "9/29/2023",
     },
     {
       movie: "Se7en",
@@ -373,7 +373,7 @@ const PlayCount = require("./models/playcount");
         "Directed By David Fincher",
         "Starring Brad Pitt",
       ],
-      activeDate: "8/30/2023",
+      activeDate: "9/30/2023",
     },
     {
       movie: "Saving Private Ryan",
@@ -393,7 +393,7 @@ const PlayCount = require("./models/playcount");
         "Directed By Christopher Nolan",
         "Starring: Matthew McConaughey",
       ],
-      activeDate: "9/1/2023",
+      activeDate: "10/1/2023",
     },
     {
       movie: "The Godfather",
@@ -403,7 +403,7 @@ const PlayCount = require("./models/playcount");
         "Based on a Novel by Mario Puzo",
         "Directed by Francis Ford Coppola",
       ],
-      activeDate: "9/2/2023",
+      activeDate: "10/2/2023",
     },
     {
       movie: "The Prestige",
@@ -413,7 +413,7 @@ const PlayCount = require("./models/playcount");
         "Featuring David Bowie",
         "Directed by Christopher Nolan",
       ],
-      activeDate: "9/3/2023",
+      activeDate: "10/3/2023",
     },
     {
       movie: "American History X",
@@ -423,7 +423,7 @@ const PlayCount = require("./models/playcount");
         "Featuring Ethan Suplee",
         "Starring Edward Norton",
       ],
-      activeDate: "9/4/2023",
+      activeDate: "10/4/2023",
     },
     {
       movie: "Gladiator",
@@ -433,7 +433,7 @@ const PlayCount = require("./models/playcount");
         "Directed By Ridley Scott",
         "Starring Russell Crowe",
       ],
-      activeDate: "9/5/2023",
+      activeDate: "10/5/2023",
     },
     {
       movie: "Whiplash",
@@ -443,7 +443,7 @@ const PlayCount = require("./models/playcount");
         "Released in 2014",
         "Also starring J.K. Simmons",
       ],
-      activeDate: "9/6/2023",
+      activeDate: "10/6/2023",
     },
     {
       movie: "Singin' in the Rain",
@@ -453,7 +453,7 @@ const PlayCount = require("./models/playcount");
         "Genre: Musical, Comedy, Romance",
         "Starring Gene Kelly",
       ],
-      activeDate: "9/7/2023",
+      activeDate: "10/7/2023",
     },
     {
       movie: "Vertigo",
@@ -463,7 +463,7 @@ const PlayCount = require("./models/playcount");
         "Starring Kim Novak",
         "Directed By Alfred Hitchcock",
       ],
-      activeDate: "9/8/2023",
+      activeDate: "10/8/2023",
     },
 
     {
