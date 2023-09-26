@@ -739,6 +739,6 @@ const PlayCount = require("./models/playcount");
       ],
     },
   ]);
-  console.log(movieList);
+  // console.log(movieList);
   process.exit();
 })();

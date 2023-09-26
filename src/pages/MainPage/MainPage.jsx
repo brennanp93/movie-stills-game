@@ -3,11 +3,12 @@ import SubmitForm from "../../components/SubmitForm/SubmitForm";
 import ResultPage from "../../components/ResultPage/ResultPage";
 import HintPage from "../../components/HintPage/HintPage";
 import Fuse from "fuse.js";
+// import answerkey from "../../../models/answerkey";
 
 export default function MainPage({
   playCount,
   dailyQuestion,
-  answerKey,
+  // answerKey,
   cookies,
   setCookies,
   updateCount,
@@ -21,7 +22,7 @@ export default function MainPage({
     parseInt(localStorage.getItem("numGuesses")) || 4
   );
 
-  //For Setting Cookies & to retrieve today's question based on date. 
+  //For Setting Cookies & to retrieve today's question based on date.
   const todayDate = new Date().toLocaleDateString();
 
   //For Setting Cookies Expiration
@@ -32,8 +33,10 @@ export default function MainPage({
   let currentMovie = dailyQuestion?.find(
     (question) => question.activeDate === todayDate
   );
-  // let currentMovie = dailyQuestion;
-  // console.log(currentMovie);
+
+  //Answer Key For Fuzzy Search
+  let answerKey = dailyQuestion?.map((question) => question?.movie) || [];
+
   let correctAnswer = currentMovie?.movie;
   let minLengthAnswer = Math?.floor(correctAnswer?.length * 0.66);
 
@@ -61,12 +64,15 @@ export default function MainPage({
   function handleSubmit(evt) {
     evt.preventDefault();
     /*---fuzzy search---*/
-    const options = {
-      includeScore: true,
-      keys: [{ name: "answer" }],
-    };
-    const fuse = new Fuse(answerKey, options);
-    const possibleResult = fuse.search(incomingGuess)[0]?.item.answer;
+    // const options = {
+    //   includeScore: true,
+    //   keys: [{ name: "answer" }],
+    // };
+    const fuse = new Fuse(answerKey);
+    // console.log(fuse)
+    // const possibleResult = fuse.search(incomingGuess);
+    const possibleResult = fuse.search(incomingGuess)[0]?.item;
+    console.log(possibleResult);
     let result;
     if (possibleResult === correctAnswer) {
       result = correctAnswer;

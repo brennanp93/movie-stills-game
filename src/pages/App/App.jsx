@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
-import * as answerKeyAPI from "../../utilities/answerkey-api";
+// import * as answerKeyAPI from "../../utilities/answerkey-api";
 import * as movieListAPI from "../../utilities/movielist-api";
 import * as playcountAPI from "../../utilities/playcount-api";
 
@@ -13,7 +13,7 @@ import AboutPage from "../../components/AboutPage/AboutPage";
 // import "./App.css";
 import "./App2.css";
 export default function App() {
-  const [answerKey, setAnswerKey] = useState();
+  // const [answerKey, setAnswerKey] = useState();
   const [dailyQuestion, setDailyQuestion] = useState();
   const [playCount, setPlayCount] = useState(0);
   const [cookies, setCookies] = useCookies(["date"]);
@@ -33,10 +33,10 @@ export default function App() {
 
   useEffect(function () {
     async function getDailyItems() {
-      const entireAnswerKey = await answerKeyAPI.getAll();
+      // const entireAnswerKey = await answerKeyAPI.getAll();
       const todayItem = await movieListAPI.getAll();
       const currentPlayCountObject = await playcountAPI.getAll();
-      setAnswerKey(entireAnswerKey[0].answers);
+      // setAnswerKey(entireAnswerKey[0].answers);
       setDailyQuestion(todayItem);
       // setDailyQuestion(todayItem[0]);
       setPlayCount(currentPlayCountObject[0]);
@@ -62,7 +62,7 @@ export default function App() {
     setTimeout(() => window.location.reload(true), timeout);
   }
   refreshAt(23, 59, 59);
-// console.log(dailyQuestion)
+
   return (
     <>
       <main className="App">
@@ -77,7 +77,7 @@ export default function App() {
           <MainPage
             playCount={playCount}
             dailyQuestion={dailyQuestion}
-            answerKey={answerKey}
+            // answerKey={answerKey}
             score={score}
             setScore={setScore}
             updateCount={updateCount}
