@@ -21,7 +21,7 @@ export default function MainPage({
     parseInt(localStorage.getItem("numGuesses")) || 4
   );
 
-  //For Setting Cookies
+  //For Setting Cookies & to retrieve today's question based on date. 
   const todayDate = new Date().toLocaleDateString();
 
   //For Setting Cookies Expiration
@@ -29,7 +29,11 @@ export default function MainPage({
   midnight.setHours(23, 59, 30, 0);
 
   //Current Movie (obj)
-  let currentMovie = dailyQuestion;
+  let currentMovie = dailyQuestion?.find(
+    (question) => question.activeDate === todayDate
+  );
+  // let currentMovie = dailyQuestion;
+  // console.log(currentMovie);
   let correctAnswer = currentMovie?.movie;
   let minLengthAnswer = Math?.floor(correctAnswer?.length * 0.66);
 

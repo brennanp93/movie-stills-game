@@ -37,7 +37,8 @@ export default function App() {
       const todayItem = await movieListAPI.getAll();
       const currentPlayCountObject = await playcountAPI.getAll();
       setAnswerKey(entireAnswerKey[0].answers);
-      setDailyQuestion(todayItem[0]);
+      setDailyQuestion(todayItem);
+      // setDailyQuestion(todayItem[0]);
       setPlayCount(currentPlayCountObject[0]);
     }
     getDailyItems();
@@ -61,7 +62,7 @@ export default function App() {
     setTimeout(() => window.location.reload(true), timeout);
   }
   refreshAt(23, 59, 59);
-
+// console.log(dailyQuestion)
   return (
     <>
       <main className="App">

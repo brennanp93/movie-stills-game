@@ -6,7 +6,13 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const todayDate = new Date().toLocaleDateString();
-  const todayItem = await MovieList.find({activeDate: todayDate})
+  // const todayDate = new Date().toLocaleDateString();
+  const todayItem = await MovieList.find({})
+  // console.log(todayItem)
   res.json(todayItem)
 };
+// async function index(req, res) {
+//   const todayDate = new Date().toLocaleDateString();
+//   const todayItem = await MovieList.find({activeDate: todayDate})
+//   res.json(todayItem)
+// };
