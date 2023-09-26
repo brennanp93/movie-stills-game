@@ -53,6 +53,7 @@ export default function MainPage({
     localStorage.setItem("score", score);
     localStorage.setItem("winner", winner);
   }, [winner, score]);
+  // Submit Function
   function handleSubmit(evt) {
     evt.preventDefault();
     /*---fuzzy search---*/
