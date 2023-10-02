@@ -467,10 +467,10 @@ const PlayCount = require("./models/playcount");
     },
 
     {
-      movie: "Back to the Future",
-      image: "",
-      hints: ["", "", ""],
-      activeDate: "",
+      movie: "Predator",
+      image: "https://ibb.co/xH3Q0s2",
+      hints: ["Released in 1987", "Featuring Jesse Ventura", "Starring Arnold Schwarzenegger"],
+      activeDate: "10/9/2023",
     },
     {
       movie: "The Intouchables",
