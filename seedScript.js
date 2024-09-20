@@ -33,4 +33,4 @@ fs.writeFile(filePath, updatedData, "utf8", (err)=>{
   console.log("success")
 })
 
-console.log(movieList)
+// console.log(movieList)
