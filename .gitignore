@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /seed.js
+/newSeed.js
+/movieList.js
