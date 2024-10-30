@@ -72,7 +72,7 @@ export default function MainPage({
     // console.log(fuse)
     // const possibleResult = fuse.search(incomingGuess);
     const possibleResult = fuse.search(incomingGuess)[0]?.item;
-    console.log(possibleResult);
+
     let result;
     if (possibleResult === correctAnswer) {
       result = correctAnswer;
